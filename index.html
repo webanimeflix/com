@@ -27,9 +27,45 @@
                 font-weight: bold;
                 color: aliceblue;
             }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgb(0, 128, 255);
+                padding: 15px 20px;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .navbar .brand {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .navbar a {
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                margin-left: 15px;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+            .navbar a:hover {
+                background-color: rgb(0, 100, 200);
+            }
         </style>
     </head>
     <body>
+        <div class="navbar">
+            <div class="brand">WEBANIMEFLIX</div>
+            <div>
+                <a href="#about">About</a>
+                <a href="https://www.instagram.com/_naruto4hinata_/?hl=en">Feedback</a>
+            </div>
+        </div>
         <h1><center>W E B A N I M E F L I X</center></h1>
         <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Watch Animes easily from this site
             ( Just Click and Watch )
