@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Video Gallery</title>
+    <title>Video Gallery</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #f4f4f4;
         }
         h1 {
             width: 100%;
@@ -28,9 +28,17 @@
             border-radius: 8px;
             overflow: hidden;
         }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
         iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px; /* Desktop size */
+            height: 100%;
             border: none;
         }
         .details {
@@ -67,43 +75,21 @@
 
     <!-- Video 1 -->
     <div class="video-container">
-        <iframe 
-            id="video1"
-            src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
-            allow="autoplay; fullscreen">
-        </iframe>
+        <div class="video-wrapper">
+            <iframe 
+                id="video1"
+                src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
         <div class="details">
             <h3>Episode 1</h3>
             <p>Roymen Sukuna</p>
             <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
         </div>
     </div>
-    <div class="video-container">
-        <iframe 
-            id="video2"
-            src="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/preview"
-            allow="autoplay; fullscreen">
-        </iframe>
-        <div class="details">
-            <h3>Episode 2</h3>
-            <p>For Myself</p>
-            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
-        </div>
-    </div>
-    <div class="video-container">
-        <iframe 
-            id="video3"
-            src="https://drive.google.com/file/d/163xSea6YO5ul8d6dQcykC_OBYEIwarE3/preview" 
-            allow="autoplay; fullscreen">
-        </iframe>
-        <div class="details">
-            <h3>Episode 3</h3>
-            <p>Girl of Steel</p>
-            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
-        </div>
-    </div>
 
-    <!-- Add more video blocks as needed -->
+    <!-- More video containers can be added here -->
 
     <script>
         function toggleFullscreen(videoId) {
