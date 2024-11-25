@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUJUTSU KAISEN SEASON 1</title>
+    <title>Mobile Full Screen Auto Rotate</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f4f4f4;
         }
         h1 {
             text-align: center;
             margin: 20px 0;
-            font-size: 1.8rem;
         }
         .video-container {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
+            width: 90%; /* Responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 20px 0;
             background: #fff;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
             height: 0;
-            cursor: pointer;
         }
         iframe {
             position: absolute;
@@ -43,86 +40,86 @@
             height: 100%;
             border: none;
         }
-        .description {
-            padding: 15px;
-            background: #fff;
-            border-top: 1px solid #ddd;
+        .details {
+            padding: 10px;
+            text-align: center;
         }
-        .description h2 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #333;
+        .details h3 {
+            margin: 5px 0;
+            font-size: 18px;
         }
-        .description p {
-            margin: 5px 0 0;
-            font-size: 0.95rem;
-            color: #555;
-        }
-        .description p span {
-            font-weight: bold;
+        .details p {
+            margin: 5px 0;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <h1>JUJUTSU KAISEN SEASON 1</h1>
 
-    <div class="video-container">
-        <!-- Video Player -->
-        <div class="video-wrapper" id="videoWrapper">
+    <!-- Video 1 -->
+    <div class="video-container" id="video1-container">
+        <div class="video-wrapper">
             <iframe 
                 id="video1"
                 src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
                 allow="autoplay; fullscreen">
             </iframe>
         </div>
+        <div class="details">
+            <h3>Episode 1: Ryomen Sukuna</h3>
+            <p>This episode introduces Yuji Itadori and Sukuna, a cursed spirit.</p>
+        </div>
+    </div>
 
-        <!-- Description Section -->
-        <div class="description">
-            <h2>Episode 1: Ryomen Sukuna</h2>
-            <p>
-                <span>Description:</span> This episode introduces Yuji Itadori and his journey to uncover the curse of Ryomen Sukuna. A thrilling start to the Jujutsu Kaisen series!
-            </p>
+    <!-- Video 2 -->
+    <div class="video-container" id="video2-container">
+        <div class="video-wrapper">
+            <iframe 
+                id="video2"
+                src="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 2: For Myself</h3>
+            <p>Yuji faces a moral dilemma and joins the Jujutsu High School.</p>
         </div>
     </div>
 
     <script>
-        const videoWrapper = document.getElementById('videoWrapper');
+        function handleVideoFullscreen(videoContainerId) {
+            const videoContainer = document.getElementById(videoContainerId);
 
-        // Fullscreen toggle functionality with landscape mode
-        videoWrapper.addEventListener('click', async () => {
+            // Automatically request fullscreen
+            if (videoContainer.requestFullscreen) {
+                videoContainer.requestFullscreen();
+            } else if (videoContainer.webkitRequestFullscreen) {
+                videoContainer.webkitRequestFullscreen(); // Safari compatibility
+            } else if (videoContainer.msRequestFullscreen) {
+                videoContainer.msRequestFullscreen(); // IE compatibility
+            }
+
+            // Lock screen orientation to landscape
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(err => {
+                    console.error("Orientation lock failed:", err);
+                });
+            }
+        }
+
+        // Fullscreen handling for video containers
+        const video1Container = document.getElementById('video1-container');
+        const video2Container = document.getElementById('video2-container');
+
+        video1Container.addEventListener('click', () => handleVideoFullscreen('video1-container'));
+        video2Container.addEventListener('click', () => handleVideoFullscreen('video2-container'));
+
+        // Unlock orientation on fullscreen exit
+        document.addEventListener('fullscreenchange', () => {
             if (!document.fullscreenElement) {
-                // Enter fullscreen and lock orientation
-                try {
-                    if (videoWrapper.requestFullscreen) {
-                        await videoWrapper.requestFullscreen();
-                    } else if (videoWrapper.webkitRequestFullscreen) { // Safari compatibility
-                        await videoWrapper.webkitRequestFullscreen();
-                    } else if (videoWrapper.msRequestFullscreen) { // IE compatibility
-                        await videoWrapper.msRequestFullscreen();
-                    }
-                    // Lock orientation to landscape
-                    if (screen.orientation && screen.orientation.lock) {
-                        await screen.orientation.lock('landscape');
-                    }
-                } catch (error) {
-                    console.error("Error entering fullscreen:", error);
-                }
-            } else {
-                // Exit fullscreen
-                try {
-                    if (document.exitFullscreen) {
-                        await document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) { // Safari compatibility
-                        await document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) { // IE compatibility
-                        await document.msExitFullscreen();
-                    }
-                    // Unlock orientation
-                    if (screen.orientation && screen.orientation.unlock) {
-                        await screen.orientation.unlock();
-                    }
-                } catch (error) {
-                    console.error("Error exiting fullscreen:", error);
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
                 }
             }
         });
