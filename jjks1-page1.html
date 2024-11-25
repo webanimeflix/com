@@ -88,25 +88,41 @@
     <script>
         const videoWrapper = document.getElementById('videoWrapper');
 
-        // Fullscreen toggle functionality
-        videoWrapper.addEventListener('click', () => {
+        // Fullscreen toggle functionality with landscape mode
+        videoWrapper.addEventListener('click', async () => {
             if (!document.fullscreenElement) {
-                // Enter fullscreen mode
-                if (videoWrapper.requestFullscreen) {
-                    videoWrapper.requestFullscreen();
-                } else if (videoWrapper.webkitRequestFullscreen) { // Safari compatibility
-                    videoWrapper.webkitRequestFullscreen();
-                } else if (videoWrapper.msRequestFullscreen) { // IE compatibility
-                    videoWrapper.msRequestFullscreen();
+                // Enter fullscreen and lock orientation
+                try {
+                    if (videoWrapper.requestFullscreen) {
+                        await videoWrapper.requestFullscreen();
+                    } else if (videoWrapper.webkitRequestFullscreen) { // Safari compatibility
+                        await videoWrapper.webkitRequestFullscreen();
+                    } else if (videoWrapper.msRequestFullscreen) { // IE compatibility
+                        await videoWrapper.msRequestFullscreen();
+                    }
+                    // Lock orientation to landscape
+                    if (screen.orientation && screen.orientation.lock) {
+                        await screen.orientation.lock('landscape');
+                    }
+                } catch (error) {
+                    console.error("Error entering fullscreen:", error);
                 }
             } else {
-                // Exit fullscreen mode
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { // Safari compatibility
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE compatibility
-                    document.msExitFullscreen();
+                // Exit fullscreen
+                try {
+                    if (document.exitFullscreen) {
+                        await document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) { // Safari compatibility
+                        await document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) { // IE compatibility
+                        await document.msExitFullscreen();
+                    }
+                    // Unlock orientation
+                    if (screen.orientation && screen.orientation.unlock) {
+                        await screen.orientation.unlock();
+                    }
+                } catch (error) {
+                    console.error("Error exiting fullscreen:", error);
                 }
             }
         });
