@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Gallery with Auto-Rotation</title>
+    <title>Mobile Full Screen Auto Rotate</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,26 +11,25 @@
             padding: 0;
             background-color: #f4f4f4;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
-            width: 100%;
             text-align: center;
             margin: 20px 0;
         }
         .video-container {
-            width: 800px; /* Desktop size */
-            max-width: 100%; /* Mobile responsiveness */
-            margin: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Makes it responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 10px 0;
             background: #fff;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
             height: 0;
         }
         iframe {
@@ -48,11 +47,9 @@
         .details h3 {
             margin: 5px 0;
             font-size: 18px;
-            color: #333;
         }
         .details p {
             margin: 5px 0;
-            font-size: 16px;
             color: #666;
         }
         .fullscreen-btn {
@@ -85,44 +82,40 @@
         <div class="details">
             <h3>Episode 1</h3>
             <p>Roymen Sukuna</p>
-            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
+            <button class="fullscreen-btn" onclick="toggleFullscreenWithRotate('video1')">Full Screen</button>
         </div>
     </div>
 
-    <!-- More video containers can be added here -->
-
     <script>
-        function toggleFullscreen(videoId) {
+        function toggleFullscreenWithRotate(videoId) {
             const iframe = document.getElementById(videoId);
 
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                // Request Fullscreen
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) {
-                    iframe.webkitRequestFullscreen(); // Safari
-                }
+            // Request fullscreen
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { // Safari compatibility
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE compatibility
+                iframe.msRequestFullscreen();
+            }
 
-                // Rotate Screen for Phones
-                if (window.screen.orientation && window.screen.orientation.lock) {
-                    window.screen.orientation.lock('landscape').catch(err => {
-                        console.error("Screen lock failed:", err);
-                    });
-                }
-            } else {
-                // Exit Fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen(); // Safari
-                }
-
-                // Unlock Screen Orientation
-                if (window.screen.orientation && window.screen.orientation.unlock) {
-                    window.screen.orientation.unlock();
-                }
+            // Lock screen orientation to landscape
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(err => {
+                    console.log("Orientation lock failed:", err);
+                });
             }
         }
+
+        // Handle fullscreen exit
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
     </script>
 </body>
 </html>
