@@ -1,159 +1,129 @@
-<html>
-    <head>
-        <title>JJK S1</title>
-        <style>
-            h1 {
-                font-size: 220%;
-                font-family: sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Video Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .video-container {
+            width: 800px; /* Desktop size */
+            max-width: 100%; /* Mobile responsiveness */
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 450px; /* Desktop size */
+            border: none;
+        }
+        .details {
+            padding: 10px;
+            text-align: center;
+        }
+        .details h3 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #666;
+        }
+        .fullscreen-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .fullscreen-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>JUJUTSU KAISEN SEASON 1</h1>
+
+    <!-- Video 1 -->
+    <div class="video-container">
+        <iframe 
+            id="video1"
+            src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
+            allow="autoplay; fullscreen">
+        </iframe>
+        <div class="details">
+            <h3>Episode 1</h3>
+            <p>Roymen Sukuna</p>
+            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
+        </div>
+    </div>
+    <div class="video-container">
+        <iframe 
+            id="video2"
+            src="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/preview"
+            allow="autoplay; fullscreen">
+        </iframe>
+        <div class="details">
+            <h3>Episode 2</h3>
+            <p>For Myself</p>
+            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
+        </div>
+    </div>
+    <div class="video-container">
+        <iframe 
+            id="video3"
+            src="https://drive.google.com/file/d/163xSea6YO5ul8d6dQcykC_OBYEIwarE3/preview" 
+            allow="autoplay; fullscreen">
+        </iframe>
+        <div class="details">
+            <h3>Episode 3</h3>
+            <p>Girl of Steel</p>
+            <button class="fullscreen-btn" onclick="toggleFullscreen('video1')">Full Screen</button>
+        </div>
+    </div>
+
+    <!-- Add more video blocks as needed -->
+
+    <script>
+        function toggleFullscreen(videoId) {
+            const iframe = document.getElementById(videoId);
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                // Request Fullscreen
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                }
+            } else {
+                // Exit Fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen(); // Safari
+                }
             }
-            .button-spacing {
-                margin-bottom: 60px;
-                font-weight: bold;
-                color: aliceblue;
-            }
-            pre {
-                font-size: 250%;
-            }
-        </style>
-    </head>
-    <body>
-        <h1><center>Episode 1</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Roymen Sukuna</center></pre>
-        <a href="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 2</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>For Myself</center></pre>
-        <a href="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 3</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Girl of Steel</center></pre>
-        <a href="https://drive.google.com/file/d/163xSea6YO5ul8d6dQcykC_OBYEIwarE3/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 4</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Curse Womb Must Die</center></pre>
-        <a href="https://drive.google.com/file/d/1-0SKlpNUbKvl9C6LILRAOgl9IzJkJ2Bk/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 5</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Curse Womb Must Die -II-</center></pre>
-        <a href="https://drive.google.com/file/d/1ufvVLsYFZwZow43cfqS0XeRdaq3AFuAQ/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 6</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>After Rain</center></pre>
-        <a href="https://drive.google.com/file/d/19zlVCYGTFW-RmW9lKG-yzGuEOI5IH0LD/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        </a>
-        <h1><center>Episode 7</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Assault</center></pre>
-        <a href="https://drive.google.com/file/d/1JzROhHGk1JOojqata6lPWgAzSiaTw-So/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-    </a>
-    <h1><center>Episode 8</center></h1>
-    <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Boredom</center></pre>
-    <a href="https://drive.google.com/file/d/1RyEiGttqfdnxk66gNtI0uZurst04Yq4o/view?usp=sharing">
-    <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-    </a>
-</a>
-<h1><center>Episode 9</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Small Fry and Reverse Retribution</center></pre>
-<a href="https://drive.google.com/file/d/1oNAKmTrZQo8e5-IxQGlXMONW4wZ8FXVW/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 10</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Idle Transfiguration</center></pre>
-<a href="https://drive.google.com/file/d/17pjAodmF93xXspmv9Nv_oQ8-2VHTAmcP/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 11</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Narrow-minded</center></pre>
-<a href="https://drive.google.com/file/d/16f-UDWCL0HiFK8HWuH9NQkuYl99PzUoz/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 12</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>To You, Someday</center></pre>
-<a href="https://drive.google.com/file/d/1DOgoxRoH_hfCigB79GYTljv4fySBKm49/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 13</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Tomorrow</center></pre>
-<a href="https://drive.google.com/file/d/1KbWcyRadlyPXtqzdk9gbZdICuyQAXDO8/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 14</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Kyoto Sister School Exchange Event - Group Battle 0 -</center></pre>
-<a href="https://drive.google.com/file/d/1MhguPktVqEPkrZTy-yrgBEVH0XrqFqQG/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 15</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Kyoto Sister School Exchange Event - Group Battle 1 -</center></pre>
-<a href="https://drive.google.com/file/d/1UK2Igixk6h4WNFmpBwzDFNf8fn5XTFRj/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 16</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Kyoto Sister School Exchange Event - Group Battle 2 -</center></pre>
-<a href="https://drive.google.com/file/d/1LtA1125UsK2GuOp5SIB4zfs-bgFqvTYB/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 17</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Kyoto Sister School Exchange Event - Group Battle 3 -</center></pre>
-<a href="https://drive.google.com/file/d/1cBcHWrToYtZ_-VSFhqPS6HOQCVbh1zOr/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 18</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Sage</center></pre>
-<a href="https://drive.google.com/file/d/1Z3U_e81SXwYHedtWzL2JPrvx7kHZGbJn/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 19</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Black Flash</center></pre>
-<a href="https://drive.google.com/file/d/1YydbnlmahwVE-T9drVPBFmxRpj9NhALH/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 20</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Nonstandard</center></pre>
-<a href="https://drive.google.com/file/d/1e5UNl9uN3nighCTMdaeJ43WhQU5A61cr/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 21</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Jujutsu Koshien</center></pre>
-<a href="https://drive.google.com/file/d/1iAkyfUg4yThjGZWBNDFBcrKR5sXUPYw9/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 22</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>The Origin of Blind Obedience</center></pre>
-<a href="https://drive.google.com/file/d/10ZU65XAkzChT7nb_AIX33yrKVgAQyPoQ/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 23</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>The Origin of Blind Obedience - 2 -</center></pre>
-<a href="https://drive.google.com/file/d/1Ge9Pp5WLFWpZlewUPHyH8FvdoRr_UZ1I/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-</a>
-<h1><center>Episode 24</center></h1>
-<pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Accomplices</center></pre>
-<a href="https://drive.google.com/file/d/1kjTLl-z3PkXbij7pVuWUJaRYm6uv2tZN/view?usp=sharing">
-<center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-</a>
-    </body>
+        }
+    </script>
+</body>
 </html>
