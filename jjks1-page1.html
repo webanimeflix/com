@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Full Screen Auto Rotate</title>
+    <title>JUJUTSU KAISEN SEASON 1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #f4f4f4;
         }
         h1 {
             text-align: center;
             margin: 20px 0;
+            font-size: 1.8rem;
         }
         .video-container {
-            width: 90%; /* Makes it responsive for mobile */
-            max-width: 800px; /* For larger screens */
-            margin: 10px 0;
+            position: relative;
+            width: 90%;
+            max-width: 800px;
             background: #fff;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
             height: 0;
+            cursor: pointer;
         }
         iframe {
             position: absolute;
@@ -40,79 +43,70 @@
             height: 100%;
             border: none;
         }
-        .details {
-            padding: 10px;
-            text-align: center;
+        .description {
+            padding: 15px;
+            background: #fff;
+            border-top: 1px solid #ddd;
         }
-        .details h3 {
-            margin: 5px 0;
-            font-size: 18px;
+        .description h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
         }
-        .details p {
-            margin: 5px 0;
-            color: #666;
+        .description p {
+            margin: 5px 0 0;
+            font-size: 0.95rem;
+            color: #555;
         }
-        .fullscreen-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .fullscreen-btn:hover {
-            background-color: #0056b3;
+        .description p span {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <h1>JUJUTSU KAISEN SEASON 1</h1>
 
-    <!-- Video 1 -->
     <div class="video-container">
-        <div class="video-wrapper">
+        <!-- Video Player -->
+        <div class="video-wrapper" id="videoWrapper">
             <iframe 
                 id="video1"
                 src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
                 allow="autoplay; fullscreen">
             </iframe>
         </div>
-        <div class="details">
-            <h3>Episode 1</h3>
-            <p>Roymen Sukuna</p>
-            <button class="fullscreen-btn" onclick="toggleFullscreenWithRotate('video1')">Full Screen</button>
+
+        <!-- Description Section -->
+        <div class="description">
+            <h2>Episode 1: Ryomen Sukuna</h2>
+            <p>
+                <span>Description:</span> This episode introduces Yuji Itadori and his journey to uncover the curse of Ryomen Sukuna. A thrilling start to the Jujutsu Kaisen series!
+            </p>
         </div>
     </div>
 
     <script>
-        function toggleFullscreenWithRotate(videoId) {
-            const iframe = document.getElementById(videoId);
+        const videoWrapper = document.getElementById('videoWrapper');
 
-            // Request fullscreen
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.webkitRequestFullscreen) { // Safari compatibility
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // IE compatibility
-                iframe.msRequestFullscreen();
-            }
-
-            // Lock screen orientation to landscape
-            if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('landscape').catch(err => {
-                    console.log("Orientation lock failed:", err);
-                });
-            }
-        }
-
-        // Handle fullscreen exit
-        document.addEventListener('fullscreenchange', () => {
+        // Fullscreen toggle functionality
+        videoWrapper.addEventListener('click', () => {
             if (!document.fullscreenElement) {
-                // Unlock orientation when exiting fullscreen
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
+                // Enter fullscreen mode
+                if (videoWrapper.requestFullscreen) {
+                    videoWrapper.requestFullscreen();
+                } else if (videoWrapper.webkitRequestFullscreen) { // Safari compatibility
+                    videoWrapper.webkitRequestFullscreen();
+                } else if (videoWrapper.msRequestFullscreen) { // IE compatibility
+                    videoWrapper.msRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen mode
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { // Safari compatibility
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE compatibility
+                    document.msExitFullscreen();
                 }
             }
         });
