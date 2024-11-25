@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Gallery</title>
+    <title>Video Gallery with Auto-Rotation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -94,6 +94,7 @@
     <script>
         function toggleFullscreen(videoId) {
             const iframe = document.getElementById(videoId);
+
             if (!document.fullscreenElement && !document.webkitFullscreenElement) {
                 // Request Fullscreen
                 if (iframe.requestFullscreen) {
@@ -101,12 +102,24 @@
                 } else if (iframe.webkitRequestFullscreen) {
                     iframe.webkitRequestFullscreen(); // Safari
                 }
+
+                // Rotate Screen for Phones
+                if (window.screen.orientation && window.screen.orientation.lock) {
+                    window.screen.orientation.lock('landscape').catch(err => {
+                        console.error("Screen lock failed:", err);
+                    });
+                }
             } else {
                 // Exit Fullscreen
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen(); // Safari
+                }
+
+                // Unlock Screen Orientation
+                if (window.screen.orientation && window.screen.orientation.unlock) {
+                    window.screen.orientation.unlock();
                 }
             }
         }
