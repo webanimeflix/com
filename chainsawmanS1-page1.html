@@ -1,81 +1,191 @@
-<html>
-    <head>
-        <title>chainsaw man S1</title>
-        <style>
-             h1 {
-                font-size: 230%;
-                font-family: sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Rotate Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .video-container {
+            width: 90%; /* Responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 20px 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+            height: 0;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .details {
+            padding: 10px;
+            text-align: center;
+        }
+        .details h3 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>JUJUTSU KAISEN SEASON 1</h1>
+
+    <!-- Video 1 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1_VFHIHI0oBySgXS9sgS0DNy43bocVHWV/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 1: Dog & Chainsaw</h3>
+            <p>Denji, a debt-ridden devil hunter, fuses with his pet devil, Pochita, to become Chainsaw Man after being betrayed and killed.</p>
+        </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1WOXZ06O2cjq5MMnEhiuxRPE_Z-DwKBw5/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 2: Arrival in Tokyo</h3>
+            <p>Denji is recruited by Makima into Public Safety. He starts adapting to his new life as a devil hunter under her guidance.</p>
+        </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1-QINAchsd24Ne2FY02jvqzMxY-XDTJVa/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 3: Meowy's Whereabouts</h3>
+            <p>Denji partners with Power, a fiend, to rescue her cat Meowy. However, they face the Bat Devil, and Denji unleashes his chainsaw powers.</p>
+        </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1sD94L2TdvhviH0ca3ROBQ6rQXkCI8V4Q/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 4: Rescue</h3>
+            <p>Denji battles the Bat Devil and saves Power and Meowy. Power begins to respect Denji.</p>
+        </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/16p_E2V4hzsBT-b5CIzPT-TbtpJ3Kw5gI/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 5: Gun Devil</h3>
+            <p>Makima explains the devastating power of the Gun Devil. Denji, Aki, and the squad begin hunting its fragments.</p>
+        </div>
+    </div>
+
+    <!-- Video 6 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1obSpoZ-DewKsM7rRg7_kS0vXE3Osutd2/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 6: Kill Denji</h3>
+            <p>Denji and his team enter the Eternity Devil's realm. The devil traps them and demands Denji's life.</p>
+        </div>
+    </div>
+
+    <!-- Video 7 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1tKbCjsIIRAj3JHlGMk7oL4OHXrCtgCsY/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 7: Taste of a Kiss</h3>
+            <p>Denji sacrifices himself to fight the Eternity Devil. After victory, he receives an unexpected kiss from Himeno.</p>
+        </div>
+    </div>
+
+    <script>
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
             }
-            .button-spacing {
-                margin-bottom: 60px;
-                font-weight: bold;
-                color: aliceblue;
-            }
-            pre {
-                font-size: 250%;
-            }
-        </style>
-    </head>
-    <body>
-        <h1><center>Episode 1</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Dog & Chainsaw</center></pre>
-        <a href="https://drive.google.com/file/d/1OmMwmIxfmJb3DmCAekelBc7WysRCFuKr/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 2</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Arrival in Tokyo</center></pre>
-        <a href="https://drive.google.com/file/d/1LD7ptAwsd7VS5uYMSJ0Cs4vM-u1KAMzT/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 3</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Meowy's Whereabouts</center></pre>
-        <a href="https://drive.google.com/file/d/14USiZdrc5KmsshAn-Ovl2l5EBw9TJB_8/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 4</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Rescue</center></pre>
-        <a href="https://drive.google.com/file/d/11BMkgSx2QWBD-urDlWYm1gP_QOL68EqC/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 5</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Gun Devil</center></pre>
-        <a href="https://drive.google.com/file/d/1jjlepNqaQRM06S0Mg-JwIZlL13Vq_rfk/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 6</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Kill Denji</center></pre>
-        <a href="https://drive.google.com/file/d/1Ttlrc0noN038lzQXBPjbevMusV8A37qL/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 7</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>The Taste of a Kiss</center></pre>
-        <a href="https://drive.google.com/file/d/1RaMr2akeG60rNy4w8Pw1M-2fpHp_Xq4x/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 8</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Gunfire</center></pre>
-        <a href="https://drive.google.com/file/d/1ac405X9Rqucx2QYVHy5sg2xTfAFNPxKA/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 9</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>From Kyoto</center></pre>
-        <a href="https://drive.google.com/file/d/1BAw21JbYRBLbmQdHuIk_4yyHX8fLtHGQ/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 10</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Bruised & Battered</center></pre>
-        <a href="https://drive.google.com/file/d/1Mkz82I0pSmv1hHCof8hCua6R8gBhPfZe/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 11</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Mission Start</center></pre>
-        <a href="https://drive.google.com/file/d/1rZBKraBtEgklwoqe8ltWvjOHP5JdIpO8/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-        <h1><center>Episode 12</center></h1>
-        <pre style="color: rgb(70, 67, 67); font-family: sans-serif, 'Arial Narrow Bold', ;"><center>Katana vs. Chainsaw</center></pre>
-        <a href="https://drive.google.com/file/d/1uK6kOWh6pePctZWeMNNrC_Td_dGfGdqO/view?usp=sharing">
-        <center><button class="button-spacing" style="font-size: 25px; background-color: rgb(135, 171, 205); font-size: 550%; border-radius: 10px;">Watch</button></center>
-        </a>
-    </body>
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
+    </script>
+</body>
 </html>
