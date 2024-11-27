@@ -6,39 +6,27 @@
     <title>Auto Rotate Video</title>
     <style>
         body {
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #121212; /* Black background */
-            color: white;
+            background-color: #000000;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
         }
         h1 {
             text-align: center;
             margin: 20px 0;
-            font-size: 32px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #ffa500; /* Highlight color */
+            color: chocolate;
         }
         .video-container {
-            width: 100%;
-            max-width: 800px;
-            height: 100%;
-            background: #1e1e1e;
-            border-radius: 12px;
+            width: 90%; /* Responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 20px 0;
+            background: #000000;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            cursor: pointer; /* Indicating that the video is clickable */
-        }
-        .video-container:hover {
-            transform: scale(1.02); /* Subtle zoom effect */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .video-wrapper {
             position: relative;
@@ -54,19 +42,17 @@
             border: none;
         }
         .details {
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-            background: #181818; /* Darker card background */
         }
         .details h3 {
-            margin: 10px 0;
+            margin: 5px 0;
             font-size: 18px;
-            color: #ffa500; /* Highlighted title */
+            color: chocolate;
         }
         .details p {
             margin: 5px 0;
-            color: #ccc;
-            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
@@ -74,7 +60,7 @@
     <h1>JUJUTSU KAISEN SEASON 1</h1>
 
     <!-- Video 1 -->
-    <div class="video-container" onclick="toggleFullScreen(this)">
+    <div class="video-container">
         <div class="video-wrapper">
             <iframe 
                 src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
@@ -88,7 +74,7 @@
     </div>
 
     <!-- Video 2 -->
-    <div class="video-container" onclick="toggleFullScreen(this)">
+    <div class="video-container">
         <div class="video-wrapper">
             <iframe 
                 src="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/preview" 
@@ -101,17 +87,79 @@
         </div>
     </div>
 
+    <!-- Video 3 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/163xSea6YO5ul8d6dQcykC_OBYEIwarE3/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 3: For Girl of Steel</h3>
+            <p>Yuji and Nobara face curses on their first mission, showcasing Nobara's combat skills.</p>
+        </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1-0SKlpNUbKvl9C6LILRAOgl9IzJkJ2Bk/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 4: Curse Womb Must Die</h3>
+            <p>Curse Womb Must Die</p>
+        </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://drive.google.com/file/d/1ufvVLsYFZwZow43cfqS0XeRdaq3AFuAQ/preview" 
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <div class="details">
+            <h3>Episode 5: Curse Womb Must Die - II -</h3>
+            <p>Sukuna dominates the curse but refuses to return Yuji's body, leading to Yuji's apparent death.</p>
+        </div>
+    </div>
+
     <script>
-        function toggleFullScreen(element) {
-            const iframe = element.querySelector('iframe');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.webkitRequestFullscreen) { /* Safari */
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { /* IE/Edge */
-                iframe.msRequestFullscreen();
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
             }
-        }
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
     </script>
 </body>
 </html>
