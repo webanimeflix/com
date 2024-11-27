@@ -62,10 +62,17 @@
                 margin-top: 40px;
                 font-family: Arial, sans-serif;
             }
+            .timer {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: chocolate;
+        }
     </style>
 </head>
 <body>
     <h1>CHAINSAW MAN</h1>
+    <div class="timer" id="timer">Wait: 10 seconds</div>
+
 
     <!-- Video 1 -->
     <div class="video-container">
@@ -241,6 +248,21 @@
 
 
     <script>
+         let timeLeft = 10;
+        const timerElement = document.getElementById("timer");
+        const videoContainer = document.getElementById("videoContainer");
+
+        // Timer function
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timerElement.textContent = `Timer: ${timeLeft} seconds`;
+                timeLeft--;
+            } else {
+                clearInterval(timer);
+                timerElement.textContent = "Videos are ready to play!";
+                videoContainer.style.display = "block"; // Show videos after timer ends
+            }
+        }, 1000);
         // Listen for fullscreen events triggered by the iframe
         document.addEventListener('fullscreenchange', () => {
             if (document.fullscreenElement) {
