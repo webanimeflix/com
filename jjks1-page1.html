@@ -6,10 +6,11 @@
     <title>Auto Rotate Video</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: #121212; /* Black background */
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -17,15 +18,24 @@
         h1 {
             text-align: center;
             margin: 20px 0;
+            font-size: 32px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffa500; /* Highlight color */
         }
         .video-container {
-            width: 90%; /* Responsive for mobile */
-            max-width: 800px; /* For larger screens */
+            width: 90%;
+            max-width: 800px;
             margin: 20px 0;
-            background: #fff;
-            border-radius: 8px;
+            background: #1e1e1e;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-container:hover {
+            transform: scale(1.02); /* Subtle zoom effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
         }
         .video-wrapper {
             position: relative;
@@ -41,16 +51,32 @@
             border: none;
         }
         .details {
-            padding: 10px;
+            padding: 15px;
             text-align: center;
+            background: #181818; /* Darker card background */
         }
         .details h3 {
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 18px;
+            color: #ffa500; /* Highlighted title */
         }
         .details p {
             margin: 5px 0;
-            color: #666;
+            color: #ccc;
+            font-size: 14px;
+        }
+        .footer {
+            margin: 30px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+        .footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -109,7 +135,7 @@
         </div>
         <div class="details">
             <h3>Episode 4: Curse Womb Must Die</h3>
-            <p>Curse Womb Must Die</p>
+            <p>The team faces a powerful curse, testing their skills and teamwork.</p>
         </div>
     </div>
 
@@ -127,37 +153,8 @@
         </div>
     </div>
 
-    <script>
-        // Listen for fullscreen events triggered by the iframe
-        document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement) {
-                // Lock screen orientation to landscape when entering fullscreen
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(err => {
-                        console.error("Orientation lock failed:", err);
-                    });
-                }
-            } else {
-                // Unlock orientation when exiting fullscreen
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
-                }
-            }
-        });
-
-        // Ensure videos are clickable to enable fullscreen natively
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('click', () => {
-                // Automatically enters fullscreen when iframe is clicked
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) {
-                    iframe.webkitRequestFullscreen(); // Safari
-                } else if (iframe.msRequestFullscreen) {
-                    iframe.msRequestFullscreen(); // IE/Edge
-                }
-            });
-        });
-    </script>
+    <div class="footer">
+        <p>2024 webanimeflix. Designed by <a href="#">@_naruto4hinata_</a>.</p>
+    </div>
 </body>
 </html>
