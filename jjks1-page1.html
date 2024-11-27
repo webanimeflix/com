@@ -17,7 +17,7 @@
         h1 {
             text-align: center;
             margin: 20px 0;
-            color: chocolate;
+            color: rgb(0, 89, 255);
         }
         .video-container {
             width: 90%; /* Responsive for mobile */
@@ -48,7 +48,7 @@
         .details h3 {
             margin: 5px 0;
             font-size: 18px;
-            color: chocolate;
+            color: rgb(0, 89, 255);
         }
         .details p {
             margin: 5px 0;
@@ -62,10 +62,16 @@
                 margin-top: 40px;
                 font-family: Arial, sans-serif;
             }
+            .timer {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <h1>JUJUTSU KAISEN SEASON 1</h1>
+    <div class="timer" id="timer">Timer: 10 seconds</div>
 
     <!-- Video 1 -->
     <div class="video-container">
@@ -142,6 +148,21 @@
     </footer>
 
     <script>
+        let timeLeft = 10;
+        const timerElement = document.getElementById("timer");
+        const videoContainer = document.getElementById("videoContainer");
+
+        // Timer function
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timerElement.textContent = `Timer: ${timeLeft} seconds`;
+                timeLeft--;
+            } else {
+                clearInterval(timer);
+                timerElement.textContent = "Videos are ready to play!";
+                videoContainer.style.display = "block"; // Show videos after timer ends
+            }
+        }, 1000);
         // Listen for fullscreen events triggered by the iframe
         document.addEventListener('fullscreenchange', () => {
             if (document.fullscreenElement) {
