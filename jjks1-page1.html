@@ -14,6 +14,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
         }
         h1 {
             text-align: center;
@@ -24,14 +27,14 @@
             color: #ffa500; /* Highlight color */
         }
         .video-container {
-            width: 90%;
+            width: 100%;
             max-width: 800px;
-            margin: 20px 0;
+            height: 100%;
             background: #1e1e1e;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Indicating that the video is clickable */
         }
         .video-container:hover {
             transform: scale(1.02); /* Subtle zoom effect */
@@ -65,26 +68,13 @@
             color: #ccc;
             font-size: 14px;
         }
-        .footer {
-            margin: 30px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-        }
-        .footer a {
-            color: #ffa500;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
     <h1>JUJUTSU KAISEN SEASON 1</h1>
 
     <!-- Video 1 -->
-    <div class="video-container">
+    <div class="video-container" onclick="toggleFullScreen(this)">
         <div class="video-wrapper">
             <iframe 
                 src="https://drive.google.com/file/d/1eHDoSKz3pWA01sZIvaQSCznk294ku5mF/preview" 
@@ -98,7 +88,7 @@
     </div>
 
     <!-- Video 2 -->
-    <div class="video-container">
+    <div class="video-container" onclick="toggleFullScreen(this)">
         <div class="video-wrapper">
             <iframe 
                 src="https://drive.google.com/file/d/13I4ORluNZHDWAvwqg_3cQFdwaK9sESUJ/preview" 
@@ -111,82 +101,17 @@
         </div>
     </div>
 
-    <!-- Video 3 -->
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://drive.google.com/file/d/163xSea6YO5ul8d6dQcykC_OBYEIwarE3/preview" 
-                allow="autoplay; fullscreen">
-            </iframe>
-        </div>
-        <div class="details">
-            <h3>Episode 3: For Girl of Steel</h3>
-            <p>Yuji and Nobara face curses on their first mission, showcasing Nobara's combat skills.</p>
-        </div>
-    </div>
-
-    <!-- Video 4 -->
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://drive.google.com/file/d/1-0SKlpNUbKvl9C6LILRAOgl9IzJkJ2Bk/preview" 
-                allow="autoplay; fullscreen">
-            </iframe>
-        </div>
-        <div class="details">
-            <h3>Episode 4: Curse Womb Must Die</h3>
-            <p>The team faces a powerful curse, testing their skills and teamwork.</p>
-        </div>
-    </div>
-
-    <!-- Video 5 -->
-    <div class="video-container">
-        <div class="video-wrapper">
-            <iframe 
-                src="https://drive.google.com/file/d/1ufvVLsYFZwZow43cfqS0XeRdaq3AFuAQ/preview" 
-                allow="autoplay; fullscreen">
-            </iframe>
-        </div>
-        <div class="details">
-            <h3>Episode 5: Curse Womb Must Die - II -</h3>
-            <p>Sukuna dominates the curse but refuses to return Yuji's body, leading to Yuji's apparent death.</p>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>2024 webanimeflix. Designed by <a href="#">@_naruto4hinata_</a>.</p>
-    </div>
     <script>
-        // Listen for fullscreen events triggered by the iframe
-        document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement) {
-                // Lock screen orientation to landscape when entering fullscreen
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(err => {
-                        console.error("Orientation lock failed:", err);
-                    });
-                }
-            } else {
-                // Unlock orientation when exiting fullscreen
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
-                }
+        function toggleFullScreen(element) {
+            const iframe = element.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                iframe.msRequestFullscreen();
             }
-        });
-
-        // Ensure videos are clickable to enable fullscreen natively
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('click', () => {
-                // Automatically enters fullscreen when iframe is clicked
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) {
-                    iframe.webkitRequestFullscreen(); // Safari
-                } else if (iframe.msRequestFullscreen) {
-                    iframe.msRequestFullscreen(); // IE/Edge
-                }
-            });
-        });
+        }
     </script>
 </body>
 </html>
