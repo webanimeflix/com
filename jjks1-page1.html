@@ -154,7 +154,40 @@
     </div>
 
     <div class="footer">
-        <p>2024 webanimeflix. Designed by <a href="#">@_naruto4hinata_</a>.</p>
+        <p> 2024 webanimeflix. Designed by <a href="#">@_naruto4hinata_</a>.</p>
     </div>
+
+    <script>
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
+    </script>
 </body>
 </html>
