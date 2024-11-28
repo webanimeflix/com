@@ -10,37 +10,14 @@
                 text-decoration: underline;
                 text-decoration-color: rgb(255, 149, 0);
             }
-            h2 {
-                font-size: 230%;
-                font-family: sans-serif;
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: black;
                 color: white;
+                font-family: Arial, sans-serif;
             }
-            h3 {
-                font-size: 500%;
-                font-family: sans-serif;
-                font-style: italic;
-            }
-            pre {
-                font-size: 250%;
-                color: white;
-            }
-            .button-spacing {
-                margin-bottom: 60px;
-                font-weight: bold;
-                color: white;
-                background-color: rgb(69, 134, 255);
-                padding: 15px 30px; /* Adjust button size */
-                font-size: 300%;    /* Adjusted for better readability */
-                border-radius: 25px; /* Round edges */
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.3s, transform 0.2s;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add depth */
-            }
-            .button-spacing:hover {
-                background-color: rgb(39, 115, 255); /* Slightly darker on hover */
-                transform: scale(1.05); /* Enlarges slightly */
-            }
+            
             .navbar {
                 display: flex;
                 justify-content: space-between;
@@ -76,13 +53,45 @@
                 background-color: black;
                 color: white;
             }
+            .anime-section {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin: 50px auto;
+                padding: 20px;
+                flex-wrap: wrap; /* Makes layout responsive */
+            }
+            .anime-container {
+                text-align: center;
+                margin: 20px;
+                width: 300px; /* Fixed width for uniform size */
+            }
+            .anime-container a {
+                text-decoration: none;
+                color: white;
+            }
+            .anime-container img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+                transition: transform 0.3s;
+            }
+            .anime-container img:hover {
+                transform: scale(1.05); /* Slight zoom on hover */
+            }
+            .anime-container h2 {
+                font-size: 1.2em;
+                margin-top: 10px;
+                color: white;
+            }
+
+            /* Footer */
             footer {
                 background: #1a1a1a;
                 color: #fff;
                 text-align: center;
                 padding: 15px 0;
                 margin-top: 40px;
-                font-family: Arial, sans-serif;
             }
         </style>
     </head>
@@ -95,46 +104,46 @@
             </div>
         </div>
         <h1><center>CLICK AND WATCH</center></h1>
-        <pre><center>Watch Animes Easily from this site
-            ( Just Click and Watch )
-                 By @_naruto4hinata_
-        </center></pre>
-        <center><img src="JJkS1image.jpeg" width="600"></center>
-        <h2><center>Jujutsu Kaisen Season 1 (Hindi-Dub)</center></h2>
-        <a href="jjks1-page1.html">
-            <center><button class="button-spacing">
-                CLICK HERE
-            </button></center>
-        </a>
-        <center><img src="JJKS2image.jpg" width="600"></center>
-        <h2><center>Jujutsu Kaisen Season 2 (Hindi-Dub)</center></h2>
-        <a href="jjks2-page2.html">
-            <center><button class="button-spacing">
-                CLICK HERE
-            </button></center>
-        </a>
-        <center><img src="chainsawmanimage.JPEG" width="600"></center>
-        <h2><center>Chainsaw Man Season 1 (Hindi-Dub)</center></h2>
-        <a href="chainsawmanS1-page1.html">
-            <center><button class="button-spacing">
-                CLICK HERE
-            </button></center>
-        </a>
-        <center><img src="demon-slayer-S2image.JPEG" width="600"></center>
-        <h2><center>Demon Slayer Season 2 (Hindi-Dub) [Mugen Train Arc]</center></h2>
-        <a href="demonslayerS2-page1.html">
-            <center><button class="button-spacing">
-                CLICK HERE
-            </button></center>
-        </a>
-        </a>
-        <center><img src="demon-slayer-S2-part2image.JPEG" width="600"></center>
-        <h2><center>Demon Slayer Season 2 (Hindi-Dub) [Entertainment District Arc]</center></h2>
-        <a href="demonslayerS2-part2page.html">
-            <center><button class="button-spacing">
-                CLICK HERE
-            </button></center>
-        </a>
+        <div class="anime-section">
+            <!-- Anime 1 -->
+            <div class="anime-container">
+                <a href="jjks1-page1.html">
+                    <img src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen Season 1">
+                    <h2>Jujutsu Kaisen Season 1</h2>
+                </a>
+            </div>
+            <!-- Anime 2 -->
+            <div class="anime-container">
+                <a href="jjks2-page2.html">
+                    <img src="JJKS2image.jpg" alt="Jujutsu Kaisen Season 2">
+                    <h2>Jujutsu Kaisen Season 2</h2>
+                </a>
+            </div>
+            <!-- Anime 3 -->
+            <div class="anime-container">
+                <a href="chainsawmanS1-page1.html">
+                    <img src="chainsawmanimage.JPEG" alt="Chainsaw Man Season 1">
+                    <h2>Chainsaw Man Season 1</h2>
+                </a>
+            </div>
+        </div>
+
+        <div class="anime-section">
+            <!-- Anime 4 -->
+            <div class="anime-container">
+                <a href="demonslayerS2-page1.html">
+                    <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer Season 2 (Mugen Train Arc)">
+                    <h2>Demon Slayer Season 2 [Mugen Train Arc]</h2>
+                </a>
+            </div>
+            <!-- Anime 5 -->
+            <div class="anime-container">
+                <a href="demonslayerS2-part2page.html">
+                    <img src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer Season 2 (Entertainment District Arc)">
+                    <h2>Demon Slayer Season 2 [Entertainment District Arc]</h2>
+                </a>
+            </div>
+        </div>
         <footer>
             <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
         </footer>
