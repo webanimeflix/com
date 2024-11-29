@@ -54,6 +54,11 @@
             margin: 5px 0;
             color: #666;
         }
+        .timer {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: chocolate;
+        }
         
     </style>
 </head>
@@ -218,18 +223,49 @@
     <script>
         let timeLeft = 10;
         const timerElement = document.getElementById("timer");
-        const videoContainer = document.querySelector(".video-container");
+        const videoContainer = document.getElementById("videoContainer");
 
-        const countdown = setInterval(() => {
+        // Timer function
+        const timer = setInterval(() => {
             if (timeLeft > 0) {
-                timerElement.textContent = `Wait: ${timeLeft} seconds`;
+                timerElement.textContent = `Timer: ${timeLeft} seconds`;
                 timeLeft--;
             } else {
-                clearInterval(countdown);
-                timerElement.style.display = 'none'; // Hide timer after countdown
-                videoContainer.style.display = 'block'; // Show video container
+                clearInterval(timer);
+                timerElement.textContent = "Videos are ready to play!";
+                videoContainer.style.display = "block"; // Show videos after timer ends
             }
         }, 1000);
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
     </script>
 </body>
 </html>
