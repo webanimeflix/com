@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>webanimeflix</title>
+        <style>
+            /* Header Styles */
+            h1 {
+                font-size: 350%;
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                text-decoration: underline;
+                text-decoration-color: rgb(255, 149, 0);
+                text-shadow: 0 0 20px rgb(255, 149, 0); /* Glowing text */
+            }
+
+            h2 {
+                font-size: 230%;
+                font-family: sans-serif;
+                color: white;
+                text-shadow: 0 0 15px rgb(69, 134, 255); /* Glowing text */
+            }
+            h3 {
+                font-size: 230%;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: rgb(255, 142, 60);
+                text-shadow: 0 0 20px rgb(255, 149, 0); /* Glowing text */
+            }
+
+            pre {
+                font-size: 250%;
+                color: white;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
+            }
+
+            /* Button Styles */
+            .button-spacing {
+                margin-bottom: 60px;
+                font-weight: bold;
+                color: white;
+                background-color: rgb(69, 134, 255);
+                padding: 15px 30px;
+                font-size: 300%;
+                border-radius: 25px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+                box-shadow: 0 0 20px rgb(69, 134, 255); /* Glowing effect */
+            }
+
+            .button-spacing:hover {
+                background-color: rgb(39, 115, 255);
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgb(39, 115, 255); /* Stronger glow on hover */
+            }
+
+            /* Red Button Styles */
+            .red-button {
+                margin-top: 50px;
+                font-weight: bold;
+                color: white;
+                background-color: rgb(255, 69, 69);
+                padding: 15px 30px;
+                font-size: 250%;
+                border-radius: 25px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+                box-shadow: 0 0 20px rgb(255, 69, 69); /* Glowing effect */
+            }
+
+            .red-button:hover {
+                background-color: rgb(255, 39, 39);
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgb(255, 39, 39); /* Stronger glow on hover */
+            }
+
+            /* Navbar Styles */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgba(39, 115, 255, 0.8);
+                padding: 15px 20px;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                box-shadow: 0 0 20px rgba(39, 115, 255, 0.8); /* Glowing navbar */
+            }
+
+            .navbar .brand {
+                font-size: 80px;
+                font-weight: bold;
+                text-shadow: 0 0 25px rgba(39, 115, 255, 0.9); /* Glowing text for brand */
+            }
+
+            .navbar a {
+                text-decoration: none;
+                color: white;
+                font-size: 25px;
+                margin-left: 15px;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: background-color 0.3s, box-shadow 0.3s;
+                box-shadow: 0 0 15px rgba(39, 115, 255, 0.6); /* Glowing links */
+            }
+
+            .navbar a:hover {
+                background-color: rgb(39, 115, 255);
+                box-shadow: 0 0 25px rgb(39, 115, 255); /* Stronger glow on hover */
+            }
+
+            /* Image Styles */
+            .glowing-image {
+                width: 600px;
+                transition: transform 0.3s, box-shadow 0.3s;
+                border-radius: 15px; /* Rounded corners for images */
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Initial glow */
+            }
+
+            .glowing-image:hover {
+                transform: scale(1.05); /* Enlarges slightly */
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.8); /* Brighter glow on hover */
+            }
+
+            /* Body and Footer */
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: black;
+                color: white;
+            }
+
+            footer {
+                background: #1a1a1a;
+                color: #fff;
+                text-align: center;
+                padding: 15px 0;
+                margin-top: 40px;
+                font-family: Arial, sans-serif;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing footer text */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="brand">WEBANIMEFLIX</div>
+            <div>
+                <a href="about.html">About</a>
+                <a href="#feedback">Feedback</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <h1><center>CLICK AND WATCH</center></h1>
+        <pre><center>Watch Animes Easily from this site
+            ( Just Click and Watch )
+                 By @_naruto4hinata_
+        </center></pre>
+
+        <!-- Anime 1 -->
+        <center><img class="glowing-image" src="chainsawmanimage.JPEG" alt="Chainsaw Man Season 1"></center>
+        <h2><center>Chainsaw Man Season 1 (Hindi-Dub)</center></h2>
+        <a href="chainsawmanS1-page1.html">
+            <center><button class="button-spacing">
+                CLICK HERE
+            </button></center>
+        </a>
+
+        <!-- Anime 2 -->
+        <center><img class="glowing-image" src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen Season 1"></center>
+        <h2><center>Jujutsu Kaisen Season 1 (Hindi-Dub)</center></h2>
+        <a href="jjks1-page1.html">
+            <center><button class="button-spacing">
+                CLICK HERE
+            </button></center>
+        </a>
+
+        <!-- Anime 3 -->
+        <center><img class="glowing-image" src="demon-slayer-S2image.JPEG" alt="Demon Slayer Season 2"></center>
+        <h2><center>Demon Slayer Season 2 (Hindi-Dub) [Mugen Train Arc]</center></h2>
+        <a href="demonslayerS2-page1.html">
+            <center><button class="button-spacing">
+                CLICK HERE
+            </button></center>
+        </a>
+        <center><h3>Unlock the rest of the anime series with the password</h3></center>
+
+        <!-- Red Button -->
+        <a href="https://forms.office.com/r/TMDJG2z4ms">
+        <center>
+            <button class="red-button">REQUEST PASSWORD</button>
+        </center>
+        </a>
+
+        <!-- Footer -->
+        <footer>
+            <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
+        </footer>
+    </body>
+</html>
