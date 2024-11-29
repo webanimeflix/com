@@ -44,6 +44,7 @@
       background: #333;
       color: #fff;
       outline: none;
+      -webkit-text-security: disc; /* Mimic password style for Android */
     }
 
     input::placeholder {
@@ -85,16 +86,14 @@
 </head>
 <body>
   <div class="container">
-    <h2>Secure Access</h2>
-    <form onsubmit="return checkPassword()" autocomplete="off">
+    <h2>WebAnimeFlix</h2>
+    <form onsubmit="return checkPassword()" autocomplete="off" autocorrect="off" spellcheck="false">
       <input 
-        type="password" 
+        type="text" 
         id="password" 
         placeholder="Enter Password" 
-        autocomplete="new-password"
-        autocapitalize="off" 
-        autocorrect="off" 
-        spellcheck="false">
+        autocomplete="new-password" 
+        autocapitalize="none">
       <button type="submit">Unlock</button>
     </form>
     <p class="message error" id="error-message">Incorrect Password! Please try again.</p>
@@ -121,6 +120,16 @@
         return false;
       }
     }
+
+    // Prevent browser autofill prompts
+    window.onload = function () {
+      document.getElementById("password").value = "";
+    };
+
+    // Mimic password field behavior
+    document.getElementById("password").addEventListener("input", function () {
+      this.style.webkitTextSecurity = "disc"; // Mimic password dots
+    });
   </script>
 </body>
 </html>
