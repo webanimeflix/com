@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Rotate Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #020000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: cornflowerblue;
+        }
+        .video-container {
+            width: 90%; /* Responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 20px 0;
+            background: #000000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+            height: 0;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .details {
+            padding: 10px;
+            text-align: center;
+        }
+        .details h3 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: cornflowerblue;
+        }
+        .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+        footer {
+                background: #1a1a1a;
+                color: #fff;
+                text-align: center;
+                padding: 15px 0;
+                margin-top: 40px;
+                font-family: Arial, sans-serif;
+            }
+            .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <center><img src="kaijuno8png.png" width="300"></center>
+    <div class="timer" id="timer">Wait: 10 seconds</div>
+
+
+<!-- Episode 1 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1vv74rmqdy6vzMf0Ll0A8H1cbgVGU2MhH/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 1: The Man Who Became a Kaiju</h3>
+        <p>Kafka Hibino, a worker in kaiju cleanup, dreams of joining the Defense Force. His life changes when he mysteriously turns into a kaiju.</p>
+    </div>
+</div>
+
+<!-- Episode 2 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1s_2cW2_QDLIcewXi7DbUJrhTH4wTR3Fw/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 2: The Kaiju Who Defeats Kaiju</h3>
+        <p>Kafka learns to adapt to his new form while confronting a powerful kaiju.</p>
+    </div>
+</div>
+
+<!-- Episode 3 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1fSnpFJE26gz5G6Xce178h3YYxLYiYjhm/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 3: Revenge Match</h3>
+        <p>During the Defense Force entry exam, Kafka struggles to keep his powers hidden.</p>
+    </div>
+</div>
+
+<!-- Episode 4 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1eShBW425BrJHh8gYBRhcFp9ZZBv64JMu/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 4: Fortitude 9.8</h3>
+        <p>An emergency during the exam forces Kafka to use his kaiju abilities.</p>
+    </div>
+</div>
+
+<!-- Episode 5 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/18PfWd74rlmn0C5YmZ5e9uThNPpzSZ_Z6/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 5: Joining Up!</h3>
+        <p>Kafka joins the Defense Force but must prove himself within three months.</p>
+    </div>
+</div>
+
+<!-- Episode 6 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/14CCmKcw70EifHBfEFYodpH1ADpP5tRf_/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 6: Sagamihara Neutralization Operation at Daybreak</h3>
+        <p>Kafka participates in his first mission, witnessing the Defense Force's capabilities against a kaiju.</p>
+    </div>
+</div>
+
+<!-- Episode 7 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1jTeZkruH4MHs1HmcZnZr2vVpZ-oMh0fi/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 7: Kaiju No. 9</h3>
+        <p>A new humanoid kaiju appears, threatening the team.</p>
+    </div>
+</div>
+
+<!-- Episode 8 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1MiH6bFFvB_Hnc3qU5bsQmI4jMjuCDFUP/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 8: Welcome to the Defense Force</h3>
+        <p>Kafka's secret identity risks exposure during a battle.</p>
+    </div>
+</div>
+
+<!-- Episode 9 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1JpKVWvNnfFvcxzaj7mYs_Z5GsSdG6Vby/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 9: Raid on Tachikawa Base</h3>
+        <p>A devastating kaiju attack challenges the Defense Force.</p>
+    </div>
+</div>
+
+<!-- Episode 10 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1E9VS-ktDnqQgVzhcESf8pAjkWNbavPsA/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 10: Secret Revealed</h3>
+        <p>Kafka must choose between protecting his comrades or keeping his identity hidden.</p>
+    </div>
+</div>
+
+<!-- Episode 11 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1k9G4d5C30aRaiGq7v2LBLrI4SNpZj4_7/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 11: Kaiju No. 8 Captured</h3>
+        <p>Kafka is captured by the Defense Force's leadership.</p>
+    </div>
+</div>
+
+<!-- Episode 12 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/19Zd8S8ezOusTY4CaIF-sI8YzhGj9LcEa/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 12: Kafka Hibino</h3>
+        <p>Kafka faces his greatest challenge, proving his loyalty to humanity despite his kaiju form.</p>
+    </div>
+</div>
+
+    
+    <footer>
+        <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
+    </footer>
+
+
+    <script>
+         let timeLeft = 10;
+        const timerElement = document.getElementById("timer");
+        const videoContainer = document.getElementById("videoContainer");
+
+        // Timer function
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timerElement.textContent = `Timer: ${timeLeft} seconds`;
+                timeLeft--;
+            } else {
+                clearInterval(timer);
+                timerElement.textContent = "Videos are ready to play!";
+                videoContainer.style.display = "block"; // Show videos after timer ends
+            }
+        }, 1000);
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
+    </script>
+</body>
+</html>
