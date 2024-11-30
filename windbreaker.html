@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Rotate Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #020000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: cornflowerblue;
+        }
+        .video-container {
+            width: 90%; /* Responsive for mobile */
+            max-width: 800px; /* For larger screens */
+            margin: 20px 0;
+            background: #000000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+            height: 0;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .details {
+            padding: 10px;
+            text-align: center;
+        }
+        .details h3 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: cornflowerblue;
+        }
+        .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+        footer {
+                background: #1a1a1a;
+                color: #fff;
+                text-align: center;
+                padding: 15px 0;
+                margin-top: 40px;
+                font-family: Arial, sans-serif;
+            }
+            .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <center><img src="windbreakerpng.png" width="300"></center>
+    <div class="timer" id="timer">Wait: 10 seconds</div>
+
+
+<!-- Episode 1 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src=""  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 1: Sakura Arrives at Furin</h3>
+        <p>Haruka Sakura transfers to Furin High, known for its delinquents, and encounters their strong sense of loyalty.</p>
+    </div>
+</div>
+
+<!-- Episode 2 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 2: The Hero of My Dreams</h3>
+        <p>Sakura meets the heroic and unconventional members of the school.</p>
+    </div>
+</div>
+
+<!-- Episode 3 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 3: The Man Who Stands at the Top</h3>
+        <p>A fight between Sakura and Kyotaro Sugishita showcases the school's hierarchy.</p>
+    </div>
+</div>
+
+<!-- Episode 4 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 4: Clash</h3>
+        <p>Bofurin confronts Shishitoren to protect local students.</p>
+    </div>
+</div>
+
+<!-- Episode 5 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 5: A Gentleman</h3>
+        <p>A challenge arises from the rival gang's leader, Choji Tomiyama.</p>
+    </div>
+</div>
+
+<!-- Episode 6 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 6: Vow to Follow</h3>
+        <p>After a loss, Shishitoren's dynamics shift while Bofurin secures another victory.</p>
+    </div>
+</div>
+
+<!-- Episode 7 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 7: Fight to Win</h3>
+        <p>A heated battle between second-in-command members Sakura and Togame.</p>
+    </div>
+</div>
+
+<!-- Episode 8 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 8: Succeeding the Past</h3>
+        <p>Togame reflects on his journey and his team's changes.</p>
+    </div>
+</div>
+
+<!-- Episode 9 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 9: Umemiya's Style</h3>
+        <p>Focus on Umemiya, Bofurin's leader, and his unique approach.</p>
+    </div>
+</div>
+
+<!-- Episode 10 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 10: Dialogue</h3>
+        <p>Interpersonal tensions grow, revealing more about each character's motivations.</p>
+    </div>
+</div>
+
+<!-- Episode 11 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 11: New Classmates</h3>
+        <p>New relationships form, setting the stage for future developments.</p>
+    </div>
+</div>
+
+<!-- Episode 12 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 12: The Dependable One</h3>
+        <p>Key members step up as trusted allies.</p>
+    </div>
+</div>
+
+<!-- Episode 13 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 13: Unbreakable Bonds</h3>
+        <p>The season concludes with Bofurin's unity and strength prevailing.</p>
+    </div>
+</div>
+
+    
+    <footer>
+        <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
+    </footer>
+
+
+    <script>
+         let timeLeft = 10;
+        const timerElement = document.getElementById("timer");
+        const videoContainer = document.getElementById("videoContainer");
+
+        // Timer function
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timerElement.textContent = `Timer: ${timeLeft} seconds`;
+                timeLeft--;
+            } else {
+                clearInterval(timer);
+                timerElement.textContent = "Videos are ready to play!";
+                videoContainer.style.display = "block"; // Show videos after timer ends
+            }
+        }, 1000);
+        // Listen for fullscreen events triggered by the iframe
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Lock screen orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.error("Orientation lock failed:", err);
+                    });
+                }
+            } else {
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+
+        // Ensure videos are clickable to enable fullscreen natively
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('click', () => {
+                // Automatically enters fullscreen when iframe is clicked
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen(); // Safari
+                } else if (iframe.msRequestFullscreen) {
+                    iframe.msRequestFullscreen(); // IE/Edge
+                }
+            });
+        });
+    </script>
+</body>
+</html>
