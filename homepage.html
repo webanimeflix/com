@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAnimeFlix</title>
     <style>
-        /* Netflix-like Theme */
-        body {
+        /* General reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Style */
+        body {
             background-color: #141414;
             color: white;
             font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll for the body */
         }
 
         /* Navbar */
@@ -65,6 +71,7 @@
             padding: 20px;
             -ms-overflow-style: none;
             scrollbar-width: none;
+            max-width: 100%; /* Ensure container doesn't overflow */
         }
 
         .scroll-container::-webkit-scrollbar {
@@ -89,7 +96,8 @@
 
         .anime-card img {
             width: 100%;
-            height: auto; /* Maintain original aspect ratio */
+            height: auto;
+            object-fit: cover; /* Ensures the image covers the card properly */
         }
 
         .anime-card h2 {
@@ -126,16 +134,30 @@
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .anime-card {
-                width: 200px; /* Smaller width for mobile */
-            }
-
             h1 {
                 font-size: 2rem;
             }
 
+            .anime-card {
+                width: 250px;
+            }
+
             .scroll-container {
-                gap: 10px; /* Smaller gap between cards on mobile */
+                gap: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .anime-card {
+                width: 200px;
+            }
+
+            .scroll-container {
+                gap: 5px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
