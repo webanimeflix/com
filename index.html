@@ -4,110 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebAnimeFlix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
     body {
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      background: linear-gradient(135deg, #121212, #1c1c1c);
+      background: #000;
       color: #fff;
+    }
+
+    .animated-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 2px;
+      font-weight: 500;
+      color: #e50914; /* Netflix red */
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideFade 1s ease-in-out forwards;
+    }
+
+    @keyframes slideFade {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .container {
       text-align: center;
       width: 90%;
-      max-width: 400px;
-      background: #202020;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      max-width: 360px;
+      background: #141414;
+      border-radius: 8px;
+      padding: 40px 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
     }
 
     h2 {
-      font-size: 28px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 20px;
-      color: #e0e0e0;
+      color: #fff;
     }
 
     input {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
+      width: 80%;
+      padding: 10px;
+      font-size: 14px;
       border: none;
-      border-radius: 10px;
+      border-radius: 4px;
       margin-bottom: 20px;
       background: #333;
       color: #fff;
       outline: none;
-      -webkit-text-security: disc; /* Mimic password style for Android */
     }
 
     input::placeholder {
-      color: #aaa;
+      color: #bbb;
     }
 
     button {
-      width: 100%;
-      padding: 15px;
-      font-size: 18px;
-      font-weight: bold;
+      width: 80%;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 700;
       color: #fff;
-      background: #0056b3;
+      background: #e50914; /* Netflix red */
       border: none;
-      border-radius: 10px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background: #1a73e8;
-      box-shadow: 0 0 15px 5px rgba(26, 115, 232, 0.5);
-    }
-
-    button::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-      transform: scale(0);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    button:hover::after {
-      transform: scale(1);
+      background: #b20710;
     }
 
     .try-demo {
       margin-top: 15px;
-      font-size: 16px;
+      font-size: 14px;
       color: #aaa;
     }
 
     .try-demo a {
-      color: #1a73e8;
+      color: #e50914;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
       transition: color 0.3s ease;
     }
 
     .try-demo a:hover {
-      color: #4caf50;
+      color: #b20710;
     }
 
     .message {
       font-size: 14px;
       margin-top: 10px;
       display: none;
+      opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
 
@@ -118,11 +127,17 @@
     .message.success {
       color: #4caf50;
     }
+
+    .message.visible {
+      display: block;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
+  <p class="animated-text">Welcome To WebAnimeFlix</p>
   <div class="container">
-    <h2>WebAnimeFlix</h2>
+    <h2>Enter Password</h2>
     <form onsubmit="return checkPassword()" autocomplete="off" autocorrect="off" spellcheck="false">
       <input 
         type="text" 
@@ -147,15 +162,15 @@
       const correctPassword = "hinata"; // Change this to your desired password
 
       if (password === correctPassword) {
-        errorMessage.style.display = "none";
-        successMessage.style.display = "block";
+        errorMessage.classList.remove("visible");
+        successMessage.classList.add("visible");
         setTimeout(() => {
           window.location.href = "homepage.html"; // Redirect to secure page
         }, 1500); // Redirect after 1.5 seconds
         return false;
       } else {
-        successMessage.style.display = "none";
-        errorMessage.style.display = "block";
+        successMessage.classList.remove("visible");
+        errorMessage.classList.add("visible");
         return false;
       }
     }
@@ -164,11 +179,6 @@
     window.onload = function () {
       document.getElementById("password").value = "";
     };
-
-    // Mimic password field behavior
-    document.getElementById("password").addEventListener("input", function () {
-      this.style.webkitTextSecurity = "disc"; // Mimic password dots
-    });
   </script>
 </body>
 </html>
