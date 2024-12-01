@@ -12,7 +12,8 @@
             background-color: #141414; /* Dark background like Netflix */
             color: white;
             font-family: 'Roboto', Arial, Helvetica, sans-serif;
-            background-attachment: fixed; /* Fixes the background */
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Navbar */
@@ -132,10 +133,11 @@
 
         /* Horizontal Scroll Section for Popular Animes */
         .scroll-container {
-            overflow-x: scroll;
+            overflow-x: auto;
             display: flex;
             gap: 20px;
             padding: 20px;
+            width: 100%;
         }
 
         .scroll-container .anime-card {
