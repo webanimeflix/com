@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAnimeFlix</title>
     <style>
         /* Reset default styling */
@@ -48,6 +50,63 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
+        /* Search Bar Styles */
+        .search-bar-container {
+            width: 100%;
+            background-color: #222;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .search-bar {
+            display: inline-flex;
+            align-items: center;
+            background-color: #333;
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 60%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 12px 15px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            width: 85%;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar input::placeholder {
+            color: #aaa;
+        }
+
+        .search-bar input:focus {
+            background-color: #444;
+        }
+
+        .search-bar button {
+            border: none;
+            background-color: #e50914;
+            color: white;
+            padding: 12px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #f40612;
+            transform: scale(1.05);
+        }
+
         /* Main Section */
         .main-content {
             text-align: center;
@@ -60,17 +119,16 @@
             color: white;
         }
 
-        /* Anime Cards */
+        /* Anime Cards Section */
         #anime-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            display: block;
             padding: 20px;
         }
 
         .anime-card {
             position: relative;
             overflow: hidden;
+            margin-bottom: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -139,6 +197,14 @@
         </div>
     </div>
 
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for anime..." onkeyup="searchAnime()">
+            <button onclick="searchAnime()">Search</button>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="main-content">
         <h1>CLICK AND WATCH</h1>
@@ -203,17 +269,8 @@
         <div class="anime-card" data-title="Demon Slayer Season 1">
             <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer Season 1">
             <div class="anime-info">
-                <h2>Demon Slayer Season 2 (Hindi-Dub) [Mugen Train Arc]</h2>
-                <a href="demonslayerS2-page1.html">
-                    <button class="button-spacing">CLICK HERE</button>
-                </a>
-            </div>
-        </div>
-        <div class="anime-card" data-title="Demon Slayer Season 2">
-            <img src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer Season 2">
-            <div class="anime-info">
                 <h2>Demon Slayer Season 2 (Hindi-Dub) [Entertainment District Arc]</h2>
-                <a href="demonslayerS2-part2page.html">
+                <a href="demonslayerS2page2.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
@@ -222,8 +279,25 @@
 
     <!-- Footer -->
     <footer>
-        <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
+        <p>&copy; 2024 WebAnimeFlix. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Search Functionality
+        function searchAnime() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const animeList = document.getElementById('anime-list');
+            const animeCards = animeList.getElementsByClassName('anime-card');
+
+            for (let i = 0; i < animeCards.length; i++) {
+                const title = animeCards[i].getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    animeCards[i].style.display = '';
+                } else {
+                    animeCards[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
