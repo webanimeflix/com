@@ -28,7 +28,7 @@
         }
 
         .navbar .brand {
-            font-size: 20px; /* Adjusted font size */
+            font-size: 30px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -37,7 +37,7 @@
         .navbar a {
             text-decoration: none;
             color: white;
-            font-size: 14px; /* Adjusted font size */
+            font-size: 14px;
             margin-left: 15px;
             padding: 5px 10px;
             border-radius: 5px;
@@ -55,9 +55,10 @@
         }
 
         .search-container input {
-            width: 30%; /* Adjusted width */
+            width: 90%;
+            max-width: 500px;
             padding: 12px;
-            font-size: 15px; /* Adjusted font size */
+            font-size: 20px;
             border: none;
             border-radius: 30px;
             outline: none;
@@ -67,7 +68,7 @@
 
         /* Main Heading */
         h1 {
-            font-size: 2rem; /* Adjusted font size */
+            font-size: 1.8rem;
             text-align: center;
             color: white;
             margin-top: 20px;
@@ -87,8 +88,8 @@
             background-color: #222;
             border-radius: 10px;
             overflow: hidden;
-            width: 300px; /* Adjusted width */
-            height: 450px; /* Adjusted height */
+            width: 300px;
+            height: 450px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: transform 0.3s, box-shadow 0.3s ease-in-out;
             display: flex;
@@ -131,7 +132,7 @@
 
         /* Horizontal Scroll Section for Popular Animes */
         .scroll-container {
-            overflow-x: scroll;
+            overflow-x: auto;
             display: flex;
             gap: 20px;
             padding: 20px;
@@ -139,8 +140,8 @@
 
         .scroll-container .anime-card {
             flex: 0 0 auto;
-            width: 250px; /* Adjusted width */
-            height: 400px; /* Adjusted height */
+            width: 250px;
+            height: 400px;
         }
 
         /* Footer */
@@ -155,7 +156,8 @@
         /* Responsive Design */
         @media screen and (max-width: 768px) {
             .anime-list {
-                justify-content: space-evenly;
+                justify-content: center;
+                gap: 10px;
             }
 
             .anime-card {
@@ -172,7 +174,7 @@
             }
 
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .scroll-container {
@@ -183,6 +185,25 @@
             .scroll-container .anime-card {
                 width: 200px;
                 height: 350px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .navbar .brand {
+                font-size: 24px;
+            }
+
+            .anime-card {
+                width: 220px;
+                height: 350px;
+            }
+
+            .search-container input {
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
             }
         }
     </style>
