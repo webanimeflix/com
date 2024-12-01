@@ -3,139 +3,133 @@
 <head>
     <title>WebAnimeFlix</title>
     <style>
+        /* Reset default styling */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Global Styles */
+        body {
+            background-color: #141414;
+            color: white;
+            font-size: 16px;
+        }
+
         /* Header Styles */
-        h1 {
-            font-size: 350%;
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            font-style: inherit;
-            text-shadow: 0 0 20px rgb(0, 0, 0); /* Glowing text */
-        }
-
-        h2 {
-            font-size: 230%;
-            font-family: sans-serif;
-            color: white;
-            text-shadow: 0 0 15px rgb(0, 0, 0); /* Glowing text */
-        }
-
-        pre {
-            font-size: 250%;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow */
-        }
-
-        /* Button Styles */
-        .button-spacing {
-            margin-bottom: 60px;
-            font-weight: bold;
-            color: white;
-            background-color: rgb(69, 134, 255);
-            padding: 15px 30px;
-            font-size: 300%;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-            box-shadow: 0 0 20px rgb(69, 134, 255); /* Glowing effect */
-        }
-
-        .button-spacing:hover {
-            background-color: rgb(39, 115, 255);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgb(39, 115, 255); /* Stronger glow on hover */
-        }
-
-        /* Navbar Styles */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(39, 115, 255, 0.8);
-            padding: 15px 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
             position: sticky;
             top: 0;
             z-index: 1000;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            box-shadow: 0 0 20px rgba(39, 115, 255, 0.8); /* Glowing navbar */
         }
 
         .navbar .brand {
-            font-size: 80px;
+            font-size: 30px;
             font-weight: bold;
-            text-shadow: 0 0 25px rgba(39, 115, 255, 0.9); /* Glowing text for brand */
+            color: #e50914;
         }
 
         .navbar a {
             text-decoration: none;
             color: white;
-            font-size: 25px;
-            margin-left: 15px;
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 0 15px rgba(39, 115, 255, 0.6); /* Glowing links */
+            margin-left: 20px;
+            font-size: 18px;
+            padding: 10px;
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
-            background-color: rgb(39, 115, 255);
-            box-shadow: 0 0 25px rgb(39, 115, 255); /* Stronger glow on hover */
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Search Bar Styles */
-        .search-container {
+        /* Main Section */
+        .main-content {
             text-align: center;
-            margin: 30px 0;
+            padding: 40px 0;
         }
 
-        .search-container input {
-            width: 70%;
-            padding: 15px;
-            font-size: 45px;
-            border: 2px solid rgb(0, 0, 0);
-            border-radius: 25px;
-            outline: none;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Glowing effect */
-        }
-
-        .search-container input:focus {
-            box-shadow: 0 0 30px rgba(69, 134, 255, 1); /* Stronger glow */
-        }
-
-        /* Image Styles */
-        .glowing-image {
-            width: 600px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-radius: 15px; /* Rounded corners for images */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Initial glow */
-        }
-
-        .glowing-image:hover {
-            transform: scale(1.05); /* Enlarges slightly */
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8); /* Brighter glow on hover */
-        }
-
-        /* Body and Footer */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: bold;
             color: white;
         }
 
-        footer {
-            background: #1a1a1a;
-            color: #fff;
+        /* Anime Cards */
+        #anime-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .anime-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .anime-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .anime-card .anime-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
             text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
-            font-family: Arial, sans-serif;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing footer text */
+            border-radius: 5px;
+        }
+
+        .anime-card h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .anime-card .button-spacing {
+            padding: 10px 20px;
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .anime-card .button-spacing:hover {
+            background-color: #f40612;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 15px;
+            color: #888;
         }
     </style>
 </head>
 <body>
+
     <!-- Navbar -->
     <div class="navbar">
         <div class="brand">WEBANIMEFLIX</div>
@@ -145,74 +139,85 @@
         </div>
     </div>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input type="text" id="search-bar" oninput="searchAnime()" placeholder="Search for animes...">
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>CLICK AND WATCH</h1>
     </div>
 
-    <!-- Main Content -->
-    <h1><center>CLICK AND WATCH</center></h1>
-
-    <!-- Anime Cards -->
+    <!-- Anime Cards Section -->
     <div id="anime-list">
-        <center>
-            <div data-title="Chainsaw Man">
-                <img class="glowing-image" src="chainsawmanimage.JPEG" alt="Chainsaw Man Season 1">
+        <div class="anime-card" data-title="Chainsaw Man">
+            <img src="chainsawmanimage.JPEG" alt="Chainsaw Man Season 1">
+            <div class="anime-info">
                 <h2>Chainsaw Man Season 1 (Hindi-Dub)</h2>
                 <a href="chainsawmanS1-page1.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Wind Breaker">
-                <img class="glowing-image" src="windbreakerimage.jpg" alt="Wind Breaker">
+        </div>
+        <div class="anime-card" data-title="Wind Breaker">
+            <img src="windbreakerimage.jpg" alt="Wind Breaker">
+            <div class="anime-info">
                 <h2>Wind Breaker (Hindi-Dub)</h2>
                 <a href="windbreaker.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Kaiju No8">
-                <img class="glowing-image" src="kaijuno8image.jpg" alt="Kaiju No8">
+        </div>
+        <div class="anime-card" data-title="Kaiju No8">
+            <img src="kaijuno8image.jpg" alt="Kaiju No8">
+            <div class="anime-info">
                 <h2>Kaiju No.8 (Hindi-Dub)</h2>
                 <a href="kaijuno8page1.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Dandadan">
-                <img class="glowing-image" src="dandadanimage.jpg" alt="Dandadan">
+        </div>
+        <div class="anime-card" data-title="Dandadan">
+            <img src="dandadanimage.jpg" alt="Dandadan">
+            <div class="anime-info">
                 <h2>Dandadan (Hindi-Dub)</h2>
                 <a href="dandadan.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Jujutsu kaisen season 1">
-                <img class="glowing-image" src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen season 1">
+        </div>
+        <div class="anime-card" data-title="Jujutsu Kaisen Season 1">
+            <img src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen Season 1">
+            <div class="anime-info">
                 <h2>Jujutsu Kaisen Season 1 (Hindi-Dub)</h2>
                 <a href="jjks1-page1.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Jujutsu kaisen season 2">
-                <img class="glowing-image" src="JJKS2image.jpg" alt="Jujutsu Kaisen season 2">
+        </div>
+        <div class="anime-card" data-title="Jujutsu Kaisen Season 2">
+            <img src="JJKS2image.jpg" alt="Jujutsu Kaisen Season 2">
+            <div class="anime-info">
                 <h2>Jujutsu Kaisen Season 2 (Hindi-Dub)</h2>
                 <a href="jjks2-page2.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Demon Slayer season 1">
-                <img class="glowing-image" src="demon-slayer-S2image.JPEG" alt="Demon Slayer season 2">
+        </div>
+        <div class="anime-card" data-title="Demon Slayer Season 1">
+            <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer Season 1">
+            <div class="anime-info">
                 <h2>Demon Slayer Season 2 (Hindi-Dub) [Mugen Train Arc]</h2>
                 <a href="demonslayerS2-page1.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-            <div data-title="Demon Slayer season 2">
-                <img class="glowing-image" src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer season 2">
+        </div>
+        <div class="anime-card" data-title="Demon Slayer Season 2">
+            <img src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer Season 2">
+            <div class="anime-info">
                 <h2>Demon Slayer Season 2 (Hindi-Dub) [Entertainment District Arc]</h2>
                 <a href="demonslayerS2-part2page.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
-        </center>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -220,20 +225,5 @@
         <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
     </footer>
 
-    <script>
-        function searchAnime() {
-            const searchValue = document.getElementById('search-bar').value.toLowerCase();
-            const animeCards = document.querySelectorAll('#anime-list > center > div');
-
-            animeCards.forEach(card => {
-                const title = card.getAttribute('data-title').toLowerCase();
-                if (title.includes(searchValue)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
