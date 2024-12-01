@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAnimeFlix</title>
     <style>
         /* Netflix-like Theme */
@@ -72,20 +74,29 @@
             letter-spacing: 2px;
         }
 
-        /* Anime Cards */
+        /* Anime List Container */
+        .anime-list-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .anime-list {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
             gap: 30px;
             padding: 20px;
+            justify-content: center;
+            width: 100%;
         }
 
         .anime-card {
             background-color: #222; /* Netflix-like card background */
             border-radius: 10px;
             overflow: hidden;
-            width: 350px;
+            width: 300px;
+            height: 450px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             transition: transform 0.3s, box-shadow 0.3s ease-in-out;
         }
@@ -97,7 +108,7 @@
 
         .anime-card img {
             width: 100%;
-            height: 350px;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -106,22 +117,6 @@
             margin: 10px;
             color: white;
             text-align: center;
-        }
-
-        .anime-card a {
-            display: block;
-            background-color: #e50914;
-            text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 0 0 10px 10px;
-            transition: background-color 0.3s;
-        }
-
-        .anime-card a:hover {
-            background-color: #b20710;
         }
 
         /* Footer */
@@ -170,47 +165,56 @@
 
     <!-- Main Content -->
     <h1>Click and Watch</h1>
-    <div class="anime-list" id="anime-list">
-        <!-- Anime Cards -->
-        <div class="anime-card" data-title="Chainsaw Man">
-            <img src="chainsawmanimage.JPEG" alt="Chainsaw Man">
-            <h2>Chainsaw Man Season 1</h2>
-            <a href="chainsawmanS1-page1.html">Watch Now</a>
+    
+    <div class="anime-list-container">
+        <!-- First row with 4 images -->
+        <div class="anime-list">
+            <div class="anime-card" data-title="Chainsaw Man">
+                <a href="chainsawmanS1-page1.html">
+                    <img src="chainsawmanimage.JPEG" alt="Chainsaw Man">
+                    <h2>Chainsaw Man Season 1</h2>
+                </a>
+            </div>
+            <div class="anime-card" data-title="Wind Breaker">
+                <a href="windbreaker.html">
+                    <img src="windbreakerimage.jpg" alt="Wind Breaker">
+                    <h2>Wind Breaker</h2>
+                </a>
+            </div>
+            <div class="anime-card" data-title="Kaiju No8">
+                <a href="kaijuno8page1.html">
+                    <img src="kaijuno8image.jpg" alt="Kaiju No.8">
+                    <h2>Kaiju No.8</h2>
+                </a>
+            </div>
+            <div class="anime-card" data-title="Dandadan">
+                <a href="dandadan.html">
+                    <img src="dandadanimage.jpg" alt="Dandadan">
+                    <h2>Dandadan (Hindi-Dub)</h2>
+                </a>
+            </div>
         </div>
-        <div class="anime-card" data-title="Wind Breaker">
-            <img src="windbreakerimage.jpg" alt="Wind Breaker">
-            <h2>Wind Breaker</h2>
-            <a href="windbreaker.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Kaiju No8">
-            <img src="kaijuno8image.jpg" alt="Kaiju No.8">
-            <h2>Kaiju No.8</h2>
-            <a href="kaijuno8page1.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Dandadan">
-            <img src="dandadanimage.jpg" alt="Dandadan">
-            <h2>Dandadan (Hindi-Dub)</h2>
-            <a href="dandadan.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Jujutsu Kaisen season 1">
-            <img src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen season 1">
-            <h2>Jujutsu Kaisen Season 1</h2>
-            <a href="jjks1-page1.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Jujutsu Kaisen season 2">
-            <img src="JJKS2image.jpg" alt="Jujutsu Kaisen season 2">
-            <h2>Jujutsu Kaisen Season 2</h2>
-            <a href="jjks2-page2.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Demon Slayer Season 2">
-            <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer">
-            <h2>Demon Slayer season 2</h2>
-            <a href="demonslayerS2-page1.html">Watch Now</a>
-        </div>
-        <div class="anime-card" data-title="Demon Slayer Season 2">
-            <img src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer">
-            <h2>Demon Slayer season 2</h2>
-            <a href="demonslayerS2-part2page.html">Watch Now</a>
+
+        <!-- Second row with 3 images -->
+        <div class="anime-list">
+            <div class="anime-card" data-title="Jujutsu Kaisen season 1">
+                <a href="jjks1-page1.html">
+                    <img src="jjkImage001.JPG.jpg" alt="Jujutsu Kaisen season 1">
+                    <h2>Jujutsu Kaisen Season 1</h2>
+                </a>
+            </div>
+            <div class="anime-card" data-title="Jujutsu Kaisen season 2">
+                <a href="jjks2-page2.html">
+                    <img src="JJKS2image.jpg" alt="Jujutsu Kaisen season 2">
+                    <h2>Jujutsu Kaisen Season 2</h2>
+                </a>
+            </div>
+            <div class="anime-card" data-title="Demon Slayer Season 2">
+                <a href="demonslayerS2-page1.html">
+                    <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer">
+                    <h2>Demon Slayer season 2</h2>
+                </a>
+            </div>
         </div>
     </div>
 
