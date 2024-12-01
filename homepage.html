@@ -12,8 +12,6 @@
             background-color: #141414; /* Dark background like Netflix */
             color: white;
             font-family: 'Roboto', Arial, Helvetica, sans-serif;
-            position: relative;
-            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Navbar */
@@ -23,14 +21,16 @@
             align-items: center;
             background-color: #e50914; /* Netflix red */
             padding: 15px 20px;
-            position: sticky;
+            position: fixed; /* Fixed position for better responsiveness */
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            left: 0;
         }
 
         .navbar .brand {
-            font-size: 80px;
+            font-size: 30px; /* Reduced font size for better fit */
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -39,7 +39,7 @@
         .navbar a {
             text-decoration: none;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             margin-left: 20px;
             padding: 8px 12px;
             border-radius: 5px;
@@ -59,7 +59,7 @@
         .search-container input {
             width: 60%;
             padding: 12px;
-            font-size: 60px;
+            font-size: 16px;
             border: none;
             border-radius: 30px;
             outline: none;
@@ -133,11 +133,10 @@
 
         /* Horizontal Scroll Section for Popular Animes */
         .scroll-container {
-            overflow-x: auto;
+            overflow-x: scroll;
             display: flex;
             gap: 20px;
             padding: 20px;
-            width: 100%;
         }
 
         .scroll-container .anime-card {
@@ -168,6 +167,14 @@
 
             .navbar {
                 padding: 10px 15px;
+            }
+
+            .navbar .brand {
+                font-size: 24px; /* Make brand name smaller on mobile */
+            }
+
+            .navbar a {
+                font-size: 14px; /* Smaller font size for links */
             }
 
             .search-container input {
