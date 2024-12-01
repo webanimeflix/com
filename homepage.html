@@ -17,6 +17,10 @@
             background-color: #141414;
             color: white;
             font-size: 16px;
+            background-image: url('netbg.jpg');
+            background-repeat: no-repeat; /* Background ko repeat hone se rokne ke liye */
+            background-size: cover; /* Background ko poore screen ke liye stretch karne ke liye */
+            background-attachment: fixed; /* Background image ko fixed karne ke liye */
         }
 
         /* Header Styles */
@@ -186,7 +190,7 @@
         }
     </style>
 </head>
-<body background="netbg.jpg">
+<body>
 
     <!-- Navbar -->
     <div class="navbar">
@@ -269,8 +273,8 @@
         <div class="anime-card" data-title="Demon Slayer Season 2">
             <img src="demon-slayer-S2image.JPEG" alt="Demon Slayer Season 2">
             <div class="anime-info">
-                <h2>Demon Slayer Season 2 (Hindi-Dub) [Mugen Train Arc]</h2>
-                <a href="demonslayerS2-page1.html">
+                <h2>Demon Slayer Season 2 (Hindi-Dub)</h2>
+                <a href="demon-slayer-s2.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
@@ -278,7 +282,7 @@
         <div class="anime-card" data-title="Demon Slayer Season 2">
             <img src="demon-slayer-S2-part2image.JPEG" alt="Demon Slayer Season 2">
             <div class="anime-info">
-                <h2>Demon Slayer Season 2 (Hindi-Dub) [Entertainment District Arc]</h2>
+                <h2>Demon Slayer Season 2 (Hindi-Dub)</h2>
                 <a href="demonslayerS2-part2page.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
@@ -288,24 +292,21 @@
 
     <!-- Footer -->
     <footer>
-        <p>2024 WebAnimeFlix. Designed and Developed by @_naruto4hinata_</p>
+        <p> 2024 WebAnimeFlix. All rights reserved.</p>
     </footer>
 
     <script>
-        // Search Functionality
         function searchAnime() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const animeList = document.getElementById('anime-list');
-            const animeCards = animeList.getElementsByClassName('anime-card');
-
-            for (let i = 0; i < animeCards.length; i++) {
-                const title = animeCards[i].getAttribute('data-title').toLowerCase();
-                if (title.includes(query)) {
-                    animeCards[i].style.display = '';
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const animeCards = document.querySelectorAll('.anime-card');
+            animeCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchInput)) {
+                    card.style.display = 'block';
                 } else {
-                    animeCards[i].style.display = 'none';
+                    card.style.display = 'none';
                 }
-            }
+            });
         }
     </script>
 </body>
