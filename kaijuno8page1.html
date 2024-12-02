@@ -1,80 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Rotate Video</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #020000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            color: cornflowerblue;
-        }
-        .video-container {
-            width: 90%; /* Responsive for mobile */
-            max-width: 800px; /* For larger screens */
-            margin: 20px 0;
-            background: #000000;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
-            height: 0;
-        }
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .details {
-            padding: 10px;
-            text-align: center;
-        }
-        .details h3 {
-            margin: 5px 0;
-            font-size: 18px;
-            color: cornflowerblue;
-        }
-        .details p {
-            margin: 5px 0;
-            color: #666;
-        }
-        footer {
-                background: #1a1a1a;
-                color: #fff;
-                text-align: center;
-                padding: 15px 0;
-                margin-top: 40px;
-                font-family: Arial, sans-serif;
-            }
-            .timer {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .timer {
             font-size: 15px;
             margin-bottom: 20px;
-            color: chocolate;
+            color: cornflowerblue;
         }
-    </style>
+  </style>
 </head>
 <body>
-    <center><img src="kaijuno8png.png" width="300"></center>
-    <div class="timer" id="timer">Wait: 10 seconds</div>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+   <!-- Episodes Section -->
+    <center><img src="kaijuno8png.png" width="100"></center>
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">Episodes</h2>
+    <center><div class="timer" id="timer">Wait: 10 seconds</div></center>
 
-
-<!-- Episode 1 -->
+    <!-- Episode 1 -->
 <div class="video-container">
     <div class="video-wrapper">
         <iframe 
@@ -242,58 +292,52 @@
     </div>
 </div>
 
-    
-    <footer>
-        <p>2024 WebAnimeFlix | Designed and Developed by @_naruto4hinata_</p>
-    </footer>
+  <script>
+    let timeLeft = 10;
+   const timerElement = document.getElementById("timer");
+   const videoContainer = document.getElementById("videoContainer");
 
+   // Timer function
+   const timer = setInterval(() => {
+       if (timeLeft > 0) {
+           timerElement.textContent = `Timer: ${timeLeft} seconds`;
+           timeLeft--;
+       } else {
+           clearInterval(timer);
+           timerElement.textContent = "Videos are ready to play!";
+           videoContainer.style.display = "block"; // Show videos after timer ends
+       }
+   }, 1000);
+   // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
 
-    <script>
-         let timeLeft = 10;
-        const timerElement = document.getElementById("timer");
-        const videoContainer = document.getElementById("videoContainer");
-
-        // Timer function
-        const timer = setInterval(() => {
-            if (timeLeft > 0) {
-                timerElement.textContent = `Timer: ${timeLeft} seconds`;
-                timeLeft--;
-            } else {
-                clearInterval(timer);
-                timerElement.textContent = "Videos are ready to play!";
-                videoContainer.style.display = "block"; // Show videos after timer ends
-            }
-        }, 1000);
-        // Listen for fullscreen events triggered by the iframe
-        document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement) {
-                // Lock screen orientation to landscape when entering fullscreen
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(err => {
-                        console.error("Orientation lock failed:", err);
-                    });
-                }
-            } else {
-                // Unlock orientation when exiting fullscreen
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
-                }
-            }
-        });
-
-        // Ensure videos are clickable to enable fullscreen natively
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('click', () => {
-                // Automatically enters fullscreen when iframe is clicked
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) {
-                    iframe.webkitRequestFullscreen(); // Safari
-                } else if (iframe.msRequestFullscreen) {
-                    iframe.msRequestFullscreen(); // IE/Edge
-                }
-            });
-        });
-    </script>
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
 </body>
 </html>
