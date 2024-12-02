@@ -117,12 +117,6 @@
       </nav>
     </div>
   </header>
-  <center><img src="chainsawmanpng.png" width="150"></center>
-   <!-- Episodes Section -->
-  <div class="container">
-    <h2 style="text-align: center; margin-bottom: 30px;">Episodes</h2>
-    <center><div class="timer" id="timer">Wait: 15 seconds</div></center>
-
    <!-- Video 1 -->
    <div class="video-container">
     <div class="video-wrapper">
@@ -291,22 +285,7 @@
     </div>
 </div>
   <script>
-    let timeLeft = 15;
-   const timerElement = document.getElementById("timer");
-   const videoContainer = document.getElementById("videoContainer");
-
-   // Timer function
-   const timer = setInterval(() => {
-       if (timeLeft > 0) {
-           timerElement.textContent = `Timer: ${timeLeft} seconds`;
-           timeLeft--;
-       } else {
-           clearInterval(timer);
-           timerElement.textContent = "Videos are ready to play!";
-           videoContainer.style.display = "block"; // Show videos after timer ends
-       }
-   }, 1000);
-   // Listen for fullscreen events triggered by the iframe
+       // Listen for fullscreen events triggered by the iframe
    document.addEventListener('fullscreenchange', () => {
        if (document.fullscreenElement) {
            // Lock screen orientation to landscape when entering fullscreen
