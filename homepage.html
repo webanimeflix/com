@@ -14,16 +14,17 @@
 
         /* Global Styles */
         body {
-            background-color: #141414;
-            color: white;
-            font-size: 16px;
-            background-image: url('bgimage.jpg');
-            background-repeat: no-repeat; /* Background ko repeat hone se rokne ke liye */
-            background-size: cover; /* Image ko full screen size ke hisaab se fit karne ke liye */
-            background-position: center center; /* Background ko center mein rakhne ke liye */
-            background-attachment: fixed; /* Background ko fixed rakhne ke liye */
-            height: 100vh; /* Full viewport height tak */
+        background-color: #141414;
+        color: white;
+        font-size: 16px;
+        background-image: url('backgroungimage.jpg');
+        background-repeat: no-repeat; /* Prevent background repetition */
+        background-size: cover; /* Fit background to full screen */
+        background-position: center center; /* Center the background */
+        background-attachment: fixed; /* Keep background fixed (for desktop) */
+        height: 100vh; /* Full viewport height */
         }
+
 
         /* Header Styles */
         .navbar {
@@ -190,6 +191,12 @@
             padding: 15px;
             color: #888;
         }
+        /* Adjust Background for Mobile Devices */
+    @media (max-width: 768px) {
+        body {
+            background-attachment: scroll; /* Allow background to scroll on mobile */
+        }
+    }
     </style>
 </head>
 <body>
