@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: cornflowerblue;
+        }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+   <!-- Episodes Section -->
+    <center><img src="demonslayers2png.png" width="100"></center>
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">Episodes</h2>
+    <center><div class="timer" id="timer">Wait: 10 seconds</div></center>
+    <!-- Episode 1 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 1: A New Journey</h3>
+        <p>Tanjiro, Nezuko, and Zenitsu embark on their journey to the Swordsmith Village to repair Tanjiro's broken sword.</p>
+    </div>
+</div>
+
+<!-- Episode 2 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 2: The Swordsmith Village</h3>
+        <p>The group arrives at the Swordsmith Village and meets its master, forging new alliances with the villagers and uncovering hidden dangers.</p>
+    </div>
+</div>
+
+<!-- Episode 3 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 3: The Fight at Swordsmith Village</h3>
+        <p>A mysterious threat attacks the village, and Tanjiro faces off against powerful enemies.</p>
+    </div>
+</div>
+
+<!-- Episode 4 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 4: The Demon’s Appearance</h3>
+        <p>The Upper Rank demons reveal themselves, intensifying the battle between Tanjiro and his allies against impossible odds.</p>
+    </div>
+</div>
+
+<!-- Episode 5 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 5: Blazing Path</h3>
+        <p>Tanjiro faces his toughest challenge yet, as the battle with the Upper Rank demons escalates.</p>
+    </div>
+</div>
+
+<!-- Episode 6 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 6: The Demon Slayer’s Resolve</h3>
+        <p>In the face of overwhelming power, Tanjiro's resolve is tested, and he strives to push beyond his limits.</p>
+    </div>
+</div>
+
+<!-- Episode 7 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 7: A Clash of Strength</h3>
+        <p>The fight reaches new heights as Tanjiro and his comrades engage in an all-out battle with the powerful Upper Rank demons.</p>
+    </div>
+</div>
+
+<!-- Episode 8 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 8: Sword of the Gods</h3>
+        <p>With his sword fully repaired, Tanjiro unlocks a new level of strength, setting the stage for an intense showdown.</p>
+    </div>
+</div>
+
+<!-- Episode 9 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 9: The Final Battle Begins</h3>
+        <p>The ultimate showdown begins as Tanjiro faces off with the main antagonist in an epic battle for survival.</p>
+    </div>
+</div>
+
+<!-- Episode 10 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 10: A New Hope</h3>
+        <p>After a brutal fight, Tanjiro's victory brings new hope, but the cost of war leaves lasting scars.</p>
+    </div>
+</div>
+
+<!-- Episode 11 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 11: The Lost Soul</h3>
+        <p>A reflection on past sacrifices as Tanjiro and his friends deal with the aftermath of the battle.</p>
+    </div>
+</div>
+
+<!-- Episode 12 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 12: Victory at Last</h3>
+        <p>The season concludes with Tanjiro and his comrades emerging victorious, but the future remains uncertain as new challenges arise.</p>
+    </div>
+</div>
+
+<!-- Episode 13 -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="#blank"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Episode 13: The Road Ahead</h3>
+        <p>The group prepares for their next journey, determined to continue their fight against the demons.</p>
+    </div>
+</div>
+
+  <script>
+    let timeLeft = 10;
+   const timerElement = document.getElementById("timer");
+   const videoContainer = document.getElementById("videoContainer");
+
+   // Timer function
+   const timer = setInterval(() => {
+       if (timeLeft > 0) {
+           timerElement.textContent = `Timer: ${timeLeft} seconds`;
+           timeLeft--;
+       } else {
+           clearInterval(timer);
+           timerElement.textContent = "Videos are ready to play!";
+           videoContainer.style.display = "block"; // Show videos after timer ends
+       }
+   }, 1000);
+   // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>
