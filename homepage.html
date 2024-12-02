@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAnimeFlix</title>
+    <!-- Add Animate.css Link -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
     <style>
-        /* Reset default styling */
-        body, h1, h2, p, a {
+                /* Reset default styling */
+                body, h1, h2, p, a {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
@@ -14,18 +17,16 @@
 
         /* Global Styles */
         body {
-        background-color: #141414;
-        color: white;
-        font-size: 16px;
-        background-image: url('backgroungimage.jpg');
-        background-repeat: repeat-y; /* Repeat the background vertically */
-        background-size: cover; /* Ensure each image covers the screen width */
-        background-position: center center; /* Center each repeated image */
-        background-attachment: fixed; /* Keep background fixed for desktop */
-        height: 100vh; /* Full viewport height */
-    }
-  
-
+            background-color: #141414;
+            color: white;
+            font-size: 16px;
+            background-image: url('backgroungimage.jpg');
+            background-repeat: repeat-y; /* Repeat the background vertically */
+            background-size: cover; /* Ensure each image covers the screen width */
+            background-position: center center; /* Center each repeated image */
+            background-attachment: fixed; /* Keep background fixed for desktop */
+            height: 100vh; /* Full viewport height */
+        }
 
         /* Header Styles */
         .navbar {
@@ -37,6 +38,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: slideDown 1s ease-out;
         }
 
         .navbar .brand {
@@ -65,6 +67,7 @@
             padding: 15px 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-out;
         }
 
         .search-bar {
@@ -122,29 +125,29 @@
         }
 
         /* Slide-Up Animation */
-@keyframes slideUp {
-    0% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-.main-content h1 {
-    font-size: 48px;
-    font-weight: bold;
-    color: white;
-    animation: slideUp 1s ease-out; /* Duration set to 1 second for faster effect */
-}
-
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            animation: slideUp 1s ease-out;
+        }
 
         /* Anime Cards Section */
         #anime-list {
             display: block;
             padding: 20px;
+            animation: fadeIn 2s ease-out;
         }
 
         .anime-card {
@@ -153,6 +156,7 @@
             margin-bottom: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
         }
 
         .anime-card img {
@@ -206,12 +210,46 @@
             padding: 15px;
             color: #888;
         }
+
         /* Adjust Background for Mobile Devices */
-    @media (max-width: 768px) {
-        body {
-            background-attachment: scroll; /* Allow background to scroll on mobile */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Allow background to scroll on mobile */
+            }
         }
-    }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
     </style>
 </head>
 <body>
