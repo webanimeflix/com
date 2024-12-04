@@ -17,7 +17,7 @@
         h1 {
             text-align: center;
             margin: 20px 0;
-            color: cornflowerblue;
+            color: #f40612;
         }
         .video-container {
             width: 90%; /* Responsive for mobile */
@@ -48,7 +48,7 @@
         .details h3 {
             margin: 5px 0;
             font-size: 18px;
-            color: cornflowerblue;
+            color: #f40612;
         }
         .details p {
             margin: 5px 0;
@@ -65,14 +65,12 @@
             .timer {
             font-size: 15px;
             margin-bottom: 20px;
-            color: chocolate;
+            color: cornflowerblue;
         }
     </style>
 </head>
 <body>
-    <center><img src="windbreakerpng.png" width="300"></center>
-    <div class="timer" id="timer">Wait: 10 seconds</div>
-
+   
 
 <!-- Episode 1 -->
 <div class="video-container">
@@ -263,21 +261,6 @@
 
 
     <script>
-         let timeLeft = 10;
-        const timerElement = document.getElementById("timer");
-        const videoContainer = document.getElementById("videoContainer");
-
-        // Timer function
-        const timer = setInterval(() => {
-            if (timeLeft > 0) {
-                timerElement.textContent = `Timer: ${timeLeft} seconds`;
-                timeLeft--;
-            } else {
-                clearInterval(timer);
-                timerElement.textContent = "Videos are ready to play!";
-                videoContainer.style.display = "block"; // Show videos after timer ends
-            }
-        }, 1000);
         // Listen for fullscreen events triggered by the iframe
         document.addEventListener('fullscreenchange', () => {
             if (document.fullscreenElement) {
