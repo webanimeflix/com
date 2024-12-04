@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - WebAnimeFlix</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #141414;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+        h1 {
+            text-align: center;
+            color: #e50914;
+            margin-bottom: 25px;
+        }
+        p {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .faq-section {
+            margin-top: 30px;
+        }
+        .faq {
+            margin-bottom: 15px;
+        }
+        .question {
+            background-color: #222;
+            padding: 15px 20px;
+            cursor: pointer;
+            border: 1px solid #333;
+            border-radius: 5px;
+            outline: none;
+            color: #f5f5f5;
+            text-align: left;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .question:hover {
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: #1a1a1a;
+            padding: 0 20px;
+            border-radius: 0 0 5px 5px;
+            margin-top: -5px;
+            color: #bbb;
+        }
+        .answer p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #222;
+            color: #bbb;
+        }
+        footer span {
+            color: #e50914;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us - WebAnimeFlix</h1>
+        <p>Welcome to WebAnimeFlix! Here you can find answers to common questions about our platform. Scroll through the FAQs below for more information.</p>
+        
+        <div class="faq-section">
+            <h2 style="color: #e50914; text-align: center; margin-bottom: 20px;">Frequently Asked Questions</h2>
+            
+            <div class="faq">
+                <button class="question">Q: Is WebAnimeFlix ad-free?</button>
+                <div class="answer">
+                    <p>A: Yes, WebAnimeFlix provides a completely ad-free streaming experience for uninterrupted viewing.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <button class="question">Q: How often are new anime series uploaded?</button>
+                <div class="answer">
+                    <p>A: Anime series are uploaded regularly, but there is no fixed schedule. Keep checking for the latest updates!</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <button class="question">Q: Is WebAnimeFlix free to use?</button>
+                <div class="answer">
+                    <p>A: Yes, WebAnimeFlix offers free anime streaming with no hidden charges or subscriptions required.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <button class="question">Q: Can I request an anime to be added?</button>
+                <div class="answer">
+                    <p>A: We currently do not accept requests, but our team strives to add popular and trending anime for our users.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <button class="question">Q: Do I need an account to watch anime?</button>
+                <div class="answer">
+                    <p>A: No account is needed. Simply visit WebAnimeFlix and start streaming your favorite anime instantly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with ❤️ by <span>@_naruto4hinata_</span> | WebAnimeFlix - Ads-Free Anime Streaming</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isOpen = answer.style.maxHeight;
+
+                document.querySelectorAll('.answer').forEach(a => a.style.maxHeight = null);
+
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
