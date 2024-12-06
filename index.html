@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background: #000;
+      background: #121212;
       color: #fff;
     }
 
@@ -48,11 +48,10 @@
       text-align: center;
       width: 90%;
       max-width: 360px;
-      background: #141414;
+      background: #1f1f1f;
       border-radius: 8px;
       padding: 40px 20px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
     }
 
     h2 {
@@ -62,17 +61,13 @@
       color: #fff;
     }
 
-    input, button {
-      width: 80%;
-      padding: 10px;
-      font-size: 14px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      outline: none;
-    }
-
     input {
-      border: none;
+      width: 80%;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
       background: #333;
       color: #fff;
     }
@@ -81,17 +76,41 @@
       color: #bbb;
     }
 
-    button {
+    .unlock-btn {
+      width: 80%;
+      padding: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: #fff;
-      background: #e50914;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
       border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    button:hover {
-      background: #b20710;
+    .unlock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 8px rgba(37, 117, 252, 0.6);
+    }
+
+    .subscribe-btn {
+      margin-top: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(45deg, #e50914, #f40612);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .subscribe-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0px 8px 20px rgba(229, 9, 20, 0.6);
     }
 
     .message {
@@ -114,6 +133,18 @@
       display: block;
       opacity: 1;
     }
+
+    .try-demo {
+      font-size: 14px;
+      margin-top: 15px;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .try-demo:hover {
+      color: #e50914;
+    }
   </style>
 </head>
 <body>
@@ -125,52 +156,41 @@
         type="text" 
         id="accessCode" 
         placeholder="Enter Password or Coupon Code">
-      <button type="submit">Unlock</button>
+      <button type="submit" class="unlock-btn">Unlock</button>
     </form>
-    <p class="message error" id="error-message">Invalid input! Please try again.</p>
+    <p class="message error" id="error-message">Invalid or expired coupon! Please try again.</p>
     <p class="message success" id="success-message">Access Granted! Redirecting...</p>
+    <button class="subscribe-btn" onclick="redirectToSubscription()">Subscribe for ₹19/month</button>
+    <p class="try-demo" onclick="redirectToDemo()">Not sure? Try Demo</p>
   </div>
 
   <script>
     const correctPassword = "Hinata"; // Static password
-    const validCouponCode = "NARUTOLOVEHINATA"; // Valid coupon code
-    const couponValidityDays = 7; // Coupon validity in days
+    const sevenDayCoupon = "NARUTOLOVEHINATA"; // 7-day coupon
+    const thirtyDayCoupon = "HINATALOVENARUTO30DAYSFREECUPONCODE"; // 30-day coupon
 
-    // Check if access is already granted
-    window.onload = () => {
-      const couponExpiry = localStorage.getItem("couponExpiry");
-      const isPasswordOnly = localStorage.getItem("passwordOnly") === "true";
+    // Coupon expiry dates
+    const sevenDayExpiry = new Date();
+    sevenDayExpiry.setDate(sevenDayExpiry.getDate() + 7); // 7 days from now
 
-      // If coupon is valid and not expired
-      if (couponExpiry && new Date(couponExpiry) > new Date()) {
-        redirectToHomepage();
-      } else if (isPasswordOnly) {
-        document.getElementById("accessCode").value = ""; // Clear input field
-      } else {
-        localStorage.removeItem("couponExpiry"); // Clear expired coupon
-      }
-    };
+    const thirtyDayExpiry = new Date();
+    thirtyDayExpiry.setDate(thirtyDayExpiry.getDate() + 30); // 30 days from now
 
     function handleAccess() {
       const input = document.getElementById("accessCode").value;
       const errorMessage = document.getElementById("error-message");
       const successMessage = document.getElementById("success-message");
 
-      if (input === correctPassword) {
-        grantAccess(successMessage, errorMessage, false);
-      } else if (input === validCouponCode) {
-        activateCoupon(successMessage, errorMessage);
+      const currentDate = new Date();
+      const isSevenDayValid = input === sevenDayCoupon && currentDate <= sevenDayExpiry;
+      const isThirtyDayValid = input === thirtyDayCoupon && currentDate <= thirtyDayExpiry;
+
+      if (input === correctPassword || isSevenDayValid || isThirtyDayValid) {
+        grantAccess(successMessage, errorMessage);
       } else {
         denyAccess(successMessage, errorMessage);
       }
       return false;
-    }
-
-    function activateCoupon(successMessage, errorMessage) {
-      const expiryDate = new Date();
-      expiryDate.setDate(expiryDate.getDate() + couponValidityDays);
-      localStorage.setItem("couponExpiry", expiryDate);
-      grantAccess(successMessage, errorMessage, false);
     }
 
     function denyAccess(successMessage, errorMessage) {
@@ -178,19 +198,20 @@
       errorMessage.classList.add("visible");
     }
 
-    function grantAccess(successMessage, errorMessage, isPasswordOnly) {
+    function grantAccess(successMessage, errorMessage) {
       errorMessage.classList.remove("visible");
       successMessage.classList.add("visible");
-      if (isPasswordOnly) {
-        localStorage.setItem("passwordOnly", "true");
-      }
       setTimeout(() => {
-        redirectToHomepage();
+        window.location.href = "homepage.html";
       }, 1500);
     }
 
-    function redirectToHomepage() {
-      window.location.href = "homepage.html";
+    function redirectToSubscription() {
+      window.open("subscription.html", "_blank");
+    }
+
+    function redirectToDemo() {
+      window.open("demopage.html", "_blank");
     }
   </script>
 </body>
