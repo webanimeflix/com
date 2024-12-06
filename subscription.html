@@ -39,14 +39,15 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #000, #2c2c2c);
+      background: linear-gradient(135deg, #141414, #333333);
       color: #fff;
+      flex-direction: column;
     }
 
     .container {
       text-align: center;
       width: 90%;
-      max-width: 400px;
+      max-width: 500px;
       background: rgba(0, 0, 0, 0.8);
       padding: 40px 20px;
       border-radius: 10px;
@@ -63,16 +64,16 @@
       animation: bounceIn 1s ease-in-out;
     }
 
-    p {
+    .description {
       font-size: 16px;
       line-height: 1.6;
       color: #ccc;
       margin-bottom: 20px;
     }
 
-    .contact-btn {
+    .cta-btn {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 15px 30px;
       font-size: 16px;
       font-weight: 700;
       color: #fff;
@@ -85,31 +86,93 @@
       animation: bounceIn 1s ease-in-out 0.5s;
     }
 
-    .contact-btn:hover {
+    .cta-btn:hover {
       transform: translateY(-2px) scale(1.05);
       box-shadow: 0px 8px 20px rgba(229, 9, 20, 0.6);
     }
 
-    .contact-btn:focus {
+    .cta-btn:focus {
       outline: none;
     }
+
+    .form-container {
+      display: none;
+      width: 100%;
+      max-width: 450px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      margin-top: 20px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background-color: #222;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #e50914;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: #e50914;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #b81d1d;
+    }
+
+    .submit-btn:focus {
+      outline: none;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Main Container -->
   <div class="container">
-    <h1 class="title">30 Days Subscription</h1>
-    <p>
-      To get access to your **30 days subscription coupon**, please contact us. 
-      After successful payment, you will receive your unique coupon code for 30 days access.
+    <h1 class="title">Get 30 Days Subscription</h1>
+    <p class="description">
+      Kindly complete your registration, and after successful payment, you will receive a unique coupon code for 30-day subscription access. 
     </p>
-    <button class="contact-btn" onclick="redirectToContact()">Contact Us</button>
+    <button class="cta-btn" onclick="showForm()">Register Now</button>
+    
+    <!-- Hidden Registration Form -->
+    <div class="form-container" id="formContainer">
+      <h2 class="title">Subscription Form</h2>
+      <form action="https://formspree.io/f/{your_form_id}" method="POST">
+        <input type="text" name="name" class="input-field" placeholder="Your Full Name" required>
+        <input type="email" name="email" class="input-field" placeholder="Your Email" required>
+        <input type="text" name="instagram" class="input-field" placeholder="Instagram Username" required>
+        <input type="number" name="age" class="input-field" placeholder="Your Age" required>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    function redirectToContact() {
-      // Change the URL below to your desired contact method (e.g., email, WhatsApp, or custom form).
-      window.location.href = "form.html";
+    function showForm() {
+      document.getElementById('formContainer').style.display = 'block';
     }
   </script>
+
 </body>
 </html>
