@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background: #121212;
+      background: #000;
       color: #fff;
     }
 
@@ -48,10 +48,11 @@
       text-align: center;
       width: 90%;
       max-width: 360px;
-      background: #1f1f1f;
+      background: #141414;
       border-radius: 8px;
       padding: 40px 20px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
     }
 
     h2 {
@@ -61,13 +62,17 @@
       color: #fff;
     }
 
-    input {
+    input, button {
       width: 80%;
-      padding: 12px;
+      padding: 10px;
       font-size: 14px;
-      border-radius: 6px;
+      border-radius: 4px;
       margin-bottom: 20px;
-      border: 1px solid #333;
+      outline: none;
+    }
+
+    input {
+      border: none;
       background: #333;
       color: #fff;
     }
@@ -76,41 +81,18 @@
       color: #bbb;
     }
 
-    .unlock-btn {
-      width: 80%;
-      padding: 12px;
-      font-size: 14px;
+    button {
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      background: #1a2a6c; /* Dark blue background */
+      background: linear-gradient(to right, #1a2a6c, #b21f1f); /* Gradient */
       border: none;
-      border-radius: 6px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    .unlock-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0px 4px 8px rgba(37, 117, 252, 0.6);
-    }
-
-    .subscribe-btn {
-      margin-top: 10px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(45deg, #e50914, #f40612);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    .subscribe-btn:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0px 8px 20px rgba(229, 9, 20, 0.6);
+    button:hover {
+      background: linear-gradient(to right, #1a2a6c, #ff5f6d); /* Lighter gradient on hover */
     }
 
     .message {
@@ -134,63 +116,107 @@
       opacity: 1;
     }
 
-    .try-demo {
+    /* Subscribe button styled same as unlock button */
+    .subscribe-button {
+      width: 80%;
+      padding: 10px;
       font-size: 14px;
-      margin-top: 15px;
-      color: #fff;
+      background: #e50914;
+      border: none;
+      color: white;
       cursor: pointer;
-      text-decoration: underline;
+      transition: background 0.3s ease;
+      font-weight: 700;
     }
 
-    .try-demo:hover {
-      color: #e50914;
+    .subscribe-button:hover {
+      background: #b20710;
     }
+
+    .subscribe-info {
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 10px;
+    }
+
+    /* Try Demo link styling */
+    .demo-link {
+      font-size: 14px;
+      color: #e50914;
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .demo-link:hover {
+      color: #ff5f6d;
+    }
+
   </style>
 </head>
 <body>
   <p class="animated-text">Welcome To WebAnimeFlix</p>
   <div class="container">
-    <h2>Enter Access</h2>
+    <h2>Enter Access Code</h2>
     <form onsubmit="return handleAccess()" autocomplete="off">
       <input 
         type="text" 
         id="accessCode" 
         placeholder="Enter Password or Coupon Code">
-      <button type="submit" class="unlock-btn">Unlock</button>
+      <button type="submit">Unlock</button>
     </form>
-    <p class="message error" id="error-message">Invalid or expired coupon! Please try again.</p>
+    <p class="message error" id="error-message">Invalid input! Please try again.</p>
     <p class="message success" id="success-message">Access Granted! Redirecting...</p>
-    <button class="subscribe-btn" onclick="redirectToSubscription()">Subscribe for ₹19/month</button>
-    <p class="try-demo" onclick="redirectToDemo()">Not sure? Try Demo</p>
+
+    <!-- Subscribe Button Section -->
+    <button class="subscribe-button" onclick="subscribe()">Subscribe for ₹19/month</button>
+    <p class="subscribe-info">Unlock premium content and features by subscribing.</p>
+
+    <!-- Try Demo Link -->
+    <a href="demopage.html" class="demo-link">Try Demo</a>
   </div>
 
   <script>
     const correctPassword = "Hinata"; // Static password
-    const sevenDayCoupon = "NARUTOLOVEHINATA"; // 7-day coupon
-    const thirtyDayCoupon = "HINATALOVENARUTO30DAYSFREECUPONCODE"; // 30-day coupon
+    const validCouponCode = "NARUTOLOVEHINATA30DAYSFREECUPOUNCODE"; // Valid coupon code
+    const couponValidityDays = 30; // Coupon validity in days
 
-    // Coupon expiry dates
-    const sevenDayExpiry = new Date();
-    sevenDayExpiry.setDate(sevenDayExpiry.getDate() + 7); // 7 days from now
+    // Check if access is already granted
+    window.onload = () => {
+      const couponExpiry = localStorage.getItem("couponExpiry");
+      const isPasswordOnly = localStorage.getItem("passwordOnly") === "true";
 
-    const thirtyDayExpiry = new Date();
-    thirtyDayExpiry.setDate(thirtyDayExpiry.getDate() + 30); // 30 days from now
+      // If coupon is valid and not expired
+      if (couponExpiry && new Date(couponExpiry) > new Date()) {
+        redirectToHomepage();
+      } else if (isPasswordOnly) {
+        document.getElementById("accessCode").value = ""; // Clear input field
+      } else {
+        localStorage.removeItem("couponExpiry"); // Clear expired coupon
+      }
+    };
 
     function handleAccess() {
       const input = document.getElementById("accessCode").value;
       const errorMessage = document.getElementById("error-message");
       const successMessage = document.getElementById("success-message");
 
-      const currentDate = new Date();
-      const isSevenDayValid = input === sevenDayCoupon && currentDate <= sevenDayExpiry;
-      const isThirtyDayValid = input === thirtyDayCoupon && currentDate <= thirtyDayExpiry;
-
-      if (input === correctPassword || isSevenDayValid || isThirtyDayValid) {
-        grantAccess(successMessage, errorMessage);
+      if (input === correctPassword) {
+        grantAccess(successMessage, errorMessage, false);
+      } else if (input === validCouponCode) {
+        activateCoupon(successMessage, errorMessage);
       } else {
         denyAccess(successMessage, errorMessage);
       }
       return false;
+    }
+
+    function activateCoupon(successMessage, errorMessage) {
+      const expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + couponValidityDays);
+      localStorage.setItem("couponExpiry", expiryDate);
+      grantAccess(successMessage, errorMessage, false);
     }
 
     function denyAccess(successMessage, errorMessage) {
@@ -198,20 +224,24 @@
       errorMessage.classList.add("visible");
     }
 
-    function grantAccess(successMessage, errorMessage) {
+    function grantAccess(successMessage, errorMessage, isPasswordOnly) {
       errorMessage.classList.remove("visible");
       successMessage.classList.add("visible");
+      if (isPasswordOnly) {
+        localStorage.setItem("passwordOnly", "true");
+      }
       setTimeout(() => {
-        window.location.href = "homepage.html";
+        redirectToHomepage();
       }, 1500);
     }
 
-    function redirectToSubscription() {
-      window.open("subscription.html", "_blank");
+    function redirectToHomepage() {
+      window.location.href = "homepage.html";
     }
 
-    function redirectToDemo() {
-      window.open("demopage.html", "_blank");
+    function subscribe() {
+      window.location.href = "subscription.html"
+      // Add your subscription logic here (e.g., payment gateway integration)
     }
   </script>
 </body>
