@@ -94,55 +94,6 @@
     .cta-btn:focus {
       outline: none;
     }
-
-    .form-container {
-      display: none;
-      width: 100%;
-      max-width: 450px;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      margin-top: 20px;
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      border: 1px solid #333;
-      border-radius: 8px;
-      background-color: #222;
-      color: white;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .input-field:focus {
-      outline: none;
-      border-color: #e50914;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 15px;
-      background-color: #e50914;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .submit-btn:hover {
-      background-color: #b81d1d;
-    }
-
-    .submit-btn:focus {
-      outline: none;
-    }
-
   </style>
 </head>
 <body>
@@ -151,26 +102,14 @@
   <div class="container">
     <h1 class="title">Get 30 Days Subscription</h1>
     <p class="description">
-      Kindly complete your registration, and after successful payment, you will receive a unique coupon code for 30-day subscription access. 
+      Kindly complete your registration, and after successful payment, you will receive a unique coupon code for 30-day subscription access.
     </p>
-    <button class="cta-btn" onclick="showForm()">Register Now</button>
-    
-    <!-- Hidden Registration Form -->
-    <div class="form-container" id="formContainer">
-      <h2 class="title">Subscription Form</h2>
-      <form action="https://formspree.io/f/{your_form_id}" method="POST">
-        <input type="text" name="name" class="input-field" placeholder="Your Full Name" required>
-        <input type="email" name="email" class="input-field" placeholder="Your Email" required>
-        <input type="text" name="instagram" class="input-field" placeholder="Instagram Username" required>
-        <input type="number" name="age" class="input-field" placeholder="Your Age" required>
-        <button type="submit" class="submit-btn">Submit</button>
-      </form>
-    </div>
+    <button class="cta-btn" onclick="redirectToForm()">Register Now</button>
   </div>
 
   <script>
-    function showForm() {
-      document.getElementById('formContainer').style.display = 'block';
+    function redirectToForm() {
+      window.location.href = "form.html"; // Change this URL if your form page is located elsewhere
     }
   </script>
 
