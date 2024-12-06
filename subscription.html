@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Days Subscription</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000, #2c2c2c);
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #e50914;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      animation: bounceIn 1s ease-in-out;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(45deg, #e50914, #f40612);
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: bounceIn 1s ease-in-out 0.5s;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0px 8px 20px rgba(229, 9, 20, 0.6);
+    }
+
+    .contact-btn:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">30 Days Subscription</h1>
+    <p>
+      To get access to your **30 days subscription coupon**, please contact us. 
+      After successful payment, you will receive your unique coupon code for 30 days access.
+    </p>
+    <button class="contact-btn" onclick="redirectToContact()">Contact Us</button>
+  </div>
+
+  <script>
+    function redirectToContact() {
+      // Change the URL below to your desired contact method (e.g., email, WhatsApp, or custom form).
+      window.location.href = "mailto:webanimeflix@gmail.com";
+    }
+  </script>
+</body>
+</html>

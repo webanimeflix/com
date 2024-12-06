@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #141414;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .form-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            color: #fff;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #e50914;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #e50914;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b81d1d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Submit Your Details</h1>
+        <form action="https://formspree.io/f/mqakjnjz" method="POST">
+            <input type="text" name="name" class="input-field" placeholder="Your Full Name" required>
+            <input type="text" name="instagram" class="input-field" placeholder="Instagram Username" required>
+            <input type="email" name="email" class="input-field" placeholder="Your Email" required>
+            <input type="number" name="age" class="input-field" placeholder="Your Age" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
