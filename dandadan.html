@@ -119,10 +119,6 @@
   </header>
   
    <!-- Episodes Section -->
-    <center><img src="dandadanpng.png" width="150"></center>
-  <div class="container">
-    <h2 style="text-align: center; margin-bottom: 30px;">Episodes</h2>
-    <center><div class="timer" id="timer">Wait: 10 seconds</div></center>
 
     <!-- Episode 1 -->
     <div class="video-container">
@@ -201,22 +197,20 @@
       </div>
     </div>
   </div>
-  <script>
-    let timeLeft = 10;
-   const timerElement = document.getElementById("timer");
-   const videoContainer = document.getElementById("videoContainer");
 
-   // Timer function
-   const timer = setInterval(() => {
-       if (timeLeft > 0) {
-           timerElement.textContent = `Timer: ${timeLeft} seconds`;
-           timeLeft--;
-       } else {
-           clearInterval(timer);
-           timerElement.textContent = "Videos are ready to play!";
-           videoContainer.style.display = "block"; // Show videos after timer ends
-       }
-   }, 1000);
+  <!-- Episode 8 -->
+  <div class="video-container">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/14AlZlAABogobUO6Xwa09Bx59UeiwIYtR/preview" allow="autoplay; fullscreen"></iframe>
+    </div>
+    <div class="details">
+      <h3>Episode 8: I've Got This Funny Feeling</h3>
+      <p>Okarun and Aira encounter a strange alien creature called the "Dover Demon" who sings a parody of ABBA's "Chiquitita" while attacking them</p>
+    </div>
+  </div>
+
+
+  <script>
    // Listen for fullscreen events triggered by the iframe
    document.addEventListener('fullscreenchange', () => {
        if (document.fullscreenElement) {
