@@ -102,6 +102,33 @@
             margin-bottom: 20px;
             color: cornflowerblue;
         }
+        /* Footer */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 15px;
+            color: #888;
+        }
+        /* Red Button Styles */
+        .red-button {
+                margin-top: 50px;
+                font-weight: bold;
+                color: white;
+                background-color: rgb(255, 69, 69);
+                padding: 15px 30px;
+                font-size: 100%;
+                border-radius: 25px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+                box-shadow: 0 0 20px rgb(255, 69, 69); /* Glowing effect */
+            }
+
+            .red-button:hover {
+                background-color: rgb(255, 39, 39);
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgb(255, 39, 39); /* Stronger glow on hover */
+            }
   </style>
 </head>
 <body>
@@ -229,38 +256,16 @@
   </div>
 </div>
 
-<!-- Episode 11 -->
-<div class="video-container">
-  <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1lACSOpXtdOXL79PaZ88ZVDP9fSZFi7BH/preview" allow="autoplay; fullscreen"></iframe>
-  </div>
-  <div class="details">
-      <h3>Episode 11: The Hidden Truth</h3>
-      <p>Anya uncovers some hidden truths about her family, and Twilight continues his mission while navigating complex relationships.</p>
-  </div>
-</div>
 
-<!-- Episode 12 -->
-<div class="video-container">
-  <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1Ga5HU-ZGMWpYhNr8uD43lPNidPGBYUW1/preview" allow="autoplay; fullscreen"></iframe>
-  </div>
-  <div class="details">
-      <h3>Episode 12: The Battle Within</h3>
-      <p>Twilight's loyalty is tested as he faces a critical mission, and his family struggles with the tension of living a double life.</p>
-  </div>
-</div>
-
-<!-- Episode 13 -->
-<div class="video-container">
-  <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1EmizHFqqrzPRlplAKFpEai7JlQMsifsl/preview" allow="autoplay; fullscreen"></iframe>
-  </div>
-  <div class="details">
-      <h3>Episode 13: Undercover Operatives</h3>
-      <p>Twilight and Yor engage in intense covert operations to protect their mission while keeping their identities hidden from those around them.</p>
-  </div>
-</div>
+<a href="spyxfmilypage2.html">
+  <center>
+      <button class="red-button">Next Page</button>
+  </center>
+  </a>
+  <!-- Footer -->
+  <footer>
+    <p>2024 WebAnimeFlix. Designed and Developed by @_naruto4hinata_</p>
+</footer>
 
   <script>
     let timeLeft = 10;
