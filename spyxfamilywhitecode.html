@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: cornflowerblue;
+        }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+   <!-- Episodes Section -->
+  <div class="container">
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe 
+            src="https://drive.google.com/file/d/1w7X4i3gOLba17EZaQR5-mScJOJb_Eqwg/preview"  
+            allow="autoplay; fullscreen">
+        </iframe>
+    </div>
+    <div class="details">
+        <h3>Spy × Family Code: White</h3>
+        <p>Loid Forger, a spy, and his assassin wife Yor, must maintain their double lives while pretending to be a perfect family, while their adopted daughter Anya, who can read minds, knows their secrets</p>
+    </div>
+</div>
+
+  <script>
+   // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>
