@@ -204,7 +204,35 @@
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* Buttons ke beech ka space */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #e50914; /* Netflix red color */
+      color: #ffff; /* White text */
+      border: none;
+      border-radius: 18px; /* Rounded corners */
+      padding: 12px 30px; /* Button size */
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s; /* Hover effects ke liye smooth transitions */
+      text-transform: uppercase; /* Netflix-style text */
+    }
+    .button:hover {
+      background-color: #f40612; /* Slightly brighter red on hover */
+      transform: scale(1.05); /* Button slightly grows on hover */
+    }
 
+    .button:active {
+      transform: scale(0.98); /* Button shrinks slightly on click */
+    }
     </style>
 </head>
 <body>
@@ -230,6 +258,11 @@
     <div class="main-content">
         <h1>WATCH NOW</h1>
     </div>
+    <div class="button-container">
+        <a href="moviehomepage.html"><button>Movies</button></a>
+        <button>Animations</button>
+        <button>Games</button>
+      </div>
 
     <!-- Anime Cards Section -->
     <div id="anime-list">
