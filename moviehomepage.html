@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAnimeFlix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <!-- Add Animate.css -->
+    <style>
+        /* Reset default styling */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Global Styles */
+        body {
+            background-color: #141414;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Header Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .brand {
+            font-size: 30px;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin-left: 20px;
+            font-size: 15px;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Search Bar Styles */
+        .search-bar-container {
+            width: 100%;
+            background-color: #222;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            animation: fadeInDown 1s; /* Adding fade-in-down animation */
+        }
+
+        .search-bar {
+            display: inline-flex;
+            align-items: center;
+            background-color: #333;
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 60%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 12px 15px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            width: 85%;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar input::placeholder {
+            color: #aaa;
+        }
+
+        .search-bar input:focus {
+            background-color: #444;
+        }
+
+        .search-bar button {
+            border: none;
+            background-color: #e50914;
+            color: white;
+            padding: 12px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #f40612;
+            transform: scale(1.05);
+        }
+
+        /* Main Section */
+        .main-content {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            animation: fadeIn 1s; /* Adding fade-in animation */
+        }
+
+        /* Anime Cards Section */
+        #anime-list {
+            display: block;
+            padding: 20px;
+        }
+
+        .anime-card {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s; /* Adding fade-in-up animation */
+        }
+
+        .anime-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .anime-card .anime-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .anime-card h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .anime-card .button-spacing {
+            padding: 10px 20px;
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .anime-card .button-spacing:hover {
+            background-color: #f40612;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 15px;
+            color: #888;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* Buttons ke beech ka space */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #e50914; /* Netflix red color */
+      color: #ffff; /* White text */
+      border: none;
+      border-radius: 18px; /* Rounded corners */
+      padding: 12px 30px; /* Button size */
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s; /* Hover effects ke liye smooth transitions */
+      text-transform: uppercase; /* Netflix-style text */
+    }
+    .button:hover {
+      background-color: #f40612; /* Slightly brighter red on hover */
+      transform: scale(1.05); /* Button slightly grows on hover */
+    }
+
+    .button:active {
+      transform: scale(0.98); /* Button shrinks slightly on click */
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">WEBANIMEFLIX</div>
+        <div>
+            <a href="about.html">About</a>
+            <a href="contactus.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchAnime()">
+            <button onclick="searchAnime()">Search</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>WATCH NOW</h1>
+    </div>
+    <div class="button-container">
+        <a href="form.html"><button>Movies</button></a>
+        <button>Animations</button>
+        <button>Games</button>
+      </div>
+
+    <!-- Anime Cards Section -->
+    <div id="anime-list">
+        <div class="anime-card" data-title="Animal">
+            <img src="animalimage.jpg" alt="Animal">
+            <div class="anime-info">
+                <h2>Animal</h2>
+                <a href="chainsawmanS1-page1.html">
+                    <button class="button-spacing">CLICK HERE</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>2024 WebAnimeFlix. Designed and Developed by @_naruto4hinata_</p>
+    </footer>
+
+    <script>
+        function searchAnime() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let animeList = document.getElementById("anime-list");
+            let animeCards = animeList.getElementsByClassName("anime-card");
+
+            for (let i = 0; i < animeCards.length; i++) {
+                let title = animeCards[i].getAttribute("data-title").toLowerCase();
+                if (title.indexOf(input) > -1) {
+                    animeCards[i].style.display = "";
+                } else {
+                    animeCards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+ 
