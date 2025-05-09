@@ -22,6 +22,8 @@
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
+      font-weight: bold;
+      color: #fff;
     }
 
     p {
@@ -30,19 +32,42 @@
       color: #ccc;
     }
 
-    button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 5px;
-      background: #e50914;
+    .animated-button-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #222;
       color: white;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
-    button:hover {
-      background: #b81d24;
+    .animated-button-link::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(#1e90ff, #ff6347, #32cd32, #1e90ff);
+      z-index: -1;
+      animation: rotate 2s linear infinite;
+      border-radius: 10px;
+    }
+
+    .animated-button-link::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #222;
+      border-radius: 6px;
+      z-index: -1;
     }
 
     .disclaimer {
@@ -52,12 +77,21 @@
       max-width: 600px;
     }
 
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
       }
 
-      button {
+      .animated-button-link {
         font-size: 1rem;
         padding: 12px 24px;
       }
@@ -68,8 +102,8 @@
 
   <h1>Install Our App Now</h1>
   <p>Click the button below to download and install the latest version of our app.</p>
-  <a href="WebAnimeFlix.apk" download>
-    <button>Download APK</button>
+  <a href="WebAnimeFlix.apk" download class="animated-button-link">
+    Download APK
   </a>
 
   <div class="disclaimer">
