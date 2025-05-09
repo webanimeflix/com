@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#000000">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAnimeFlix</title>
@@ -210,25 +212,57 @@
       align-items: center;
       gap: 10px; /* Buttons ke beech ka space */
     }
-    button {
-      padding: 10px 20px;
-      font-size: 12px;
-      cursor: pointer;
-      background-color: #222; /* Netflix red color */
-      color: #ffff; /* White text */
-      border: none;
-      border-radius: 18px; /* Rounded corners */
-      padding: 12px 30px; /* Button size */
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s; /* Hover effects ke liye smooth transitions */
-      text-transform: uppercase; /* Netflix-style text */
-    }
-    .button:hover {
-      background-color: #f40612; /* Slightly brighter red on hover */
-      transform: scale(1.05); /* Button slightly grows on hover */
-    }
+.animated-button {
+  position: relative;
+  padding: 12px 24px;
+  background-color: #000;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(
+    #e50914,
+    #ff6a00,
+    #f3ec78,
+    #e50914
+  );
+  z-index: -1;
+  animation: rotate 2s linear infinite;
+  border-radius: 10px;
+}
+
+.animated-button::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: #000;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
     .button:active {
       transform: scale(0.98); /* Button shrinks slightly on click */
@@ -258,11 +292,7 @@
     <div class="main-content">
         <h1>WATCH NOW</h1>
     </div>
-    <div class="button-container">
-        <a href="moviehomepage.html"><button>Movies</button></a>
-        <button>Animations</button>
-        <button>Games</button>
-      </div>
+ <center><a href="download.html"><button class="animated-button">DOWNLOAD APP</button></a></center>
 
     <!-- Anime Cards Section -->
     <div id="anime-list">
@@ -386,6 +416,16 @@
             </div>
         </div>
 
+        <div class="anime-card" data-title="Naruto Shippuden season 1">
+            <img src="nseason-1.jpg" alt="Naruto Shippuden season 1">
+            <div class="anime-info">
+                <h2>Naruto Shippuden season 1</h2>
+                <a href="NarutoS1.html">
+                    <button class="button-spacing">CLICK HERE</button>
+                </a>
+            </div>
+        </div>
+
         <div class="anime-card" data-title="My Oni Girl">
             <img src="myonigirlimage.jpg" alt="My Oni Girl">
             <div class="anime-info">
@@ -403,6 +443,17 @@
     </footer>
 
     <script>
+        if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        })
+        .catch(function (error) {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+    });
+  }
         function searchAnime() {
             let input = document.getElementById("searchInput").value.toLowerCase();
             let animeList = document.getElementById("anime-list");
