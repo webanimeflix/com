@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: cornflowerblue;
+        }
+        /* Footer */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 15px;
+            color: #888;
+        }
+ .animated-button-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #222;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .animated-button-link::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(#1e90ff, #ff6347, #32cd32, #1e90ff);
+      z-index: -1;
+      animation: rotate 2s linear infinite;
+      border-radius: 10px;
+    }
+
+    .animated-button-link::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #222;
+      border-radius: 6px;
+      z-index: -1;
+    }
+
+    .disclaimer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #888;
+      max-width: 600px;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .animated-button-link {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+    /* Countdown and Pop-up Styles */
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .popup-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 300px;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #f40612;
+    }
+
+    /* Pulsing Circle Animation */
+    .pulsing-circle {
+      width: 100px;
+      height: 100px;
+      border: 10px solid #f40612;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin: 20px auto;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="popup" class="popup-container">
+    <div class="popup-content">
+      <h2>Page Loading...</h2>
+      <p>Please wait while the page is loading.</p>
+      <div class="countdown" id="countdown">15</div>
+      <div class="pulsing-circle"></div>
+    </div>
+  </div>
+  
+   <!-- Episodes Section -->
+    <!-- Naruto Shippuden Season 1 -->
+
+    <!-- Episode 17 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/17C1VXayUwyuR2Fs7VloULUxjvizGTAsN/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 17: Itachi’s Curse</h3>
+    <p>Itachi’s true intentions start to unfold as Sasuke confronts him.</p>
+  </div>
+</div>
+
+<!-- Episode 18 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/15Gbo1X8VDVx9FtuJenu9KuRkwGviVovJ/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 18: Tsunade’s Decision</h3>
+    <p>Tsunade faces a tough decision regarding the future of the village and its protection.</p>
+  </div>
+</div>
+
+<!-- Episode 19 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1V6CBJkE5PazkjGMwVCmL1ZeeB8ukqke9/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 19: Successor</h3>
+    <p>After a fierce battle, Naruto decides to train under a new mentor to become stronger.</p>
+  </div>
+</div>
+
+<!-- Episode 20 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1U9oFQWUQ2bRkfXYOv2ECs2Nza6ZNX4wC/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 20: Naruto vs. Orochimaru</h3>
+    <p>Naruto faces off against Orochimaru in a battle that tests his abilities and determination.</p>
+  </div>
+</div>
+
+<!-- Episode 21 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1H1TmN3BLhMR6zlAaHaK-3nRxFi7WwdcT/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 21: Pursuit</h3>
+    <p>Team Kakashi relentlessly pursues Orochimaru and his followers after their escape.</p>
+  </div>
+</div>
+
+<!-- Episode 22 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/15agGW9ED-nMAe5M3VBbpD_9MJXUw56fc/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 22: The Jutsu of Sasori</h3>
+    <p>Sasori reveals his deadly jutsu as the team faces off against him in a battle for survival.</p>
+  </div>
+</div>
+
+<!-- Episode 23 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1pBTtotlINzUlaRuRdTMymQr1Lnn7_FRq/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 23: The Second Hokage</h3>
+    <p>Flashbacks of the Second Hokage reveal important information regarding the village’s past.</p>
+  </div>
+</div>
+
+<!-- Episode 24 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1T37hsD_dX4MFV76y8EEKuagmuENxBjRp/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 24: Infiltration</h3>
+    <p>Team Kakashi infiltrates enemy territory, unaware of the looming dangers ahead.</p>
+  </div>
+</div>
+
+<!-- Episode 25 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1IvgNxs7ucrzPcbRG3fjSCCjlVG-5p-BS/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 25: A New Legend</h3>
+    <p>The new generation of ninjas begins to step up as the world faces new threats.</p>
+  </div>
+</div>
+
+<!-- Episode 26 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1cLL-fAR5L1BI0WjbB0CKGqLbECMVtAjf/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 26: Predator</h3>
+    <p>A mysterious predator is unleashed, causing chaos in the Hidden Leaf Village.</p>
+  </div>
+</div>
+
+<!-- Episode 27 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/165vr1AD3gce3Qa6L7IrXuJ1_t42xLfsR/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 27: The Mastermind</h3>
+    <p>The mastermind behind the recent attacks is finally revealed, leaving the village in shock.</p>
+  </div>
+</div>
+
+<!-- Episode 28 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/14sSo4dFIZI02aawrOuWz__Y2nryjiGkc/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 28: An Unlikely Bond</h3>
+    <p>Unexpected bonds are formed as the heroes unite to combat a common enemy.</p>
+  </div>
+</div>
+
+<!-- Episode 29 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1YbQ36wrx8U5ASY2A1e-5FqnjjHomj07r/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 29: A Reunion</h3>
+    <p>Old friends reunite under tense circumstances as the village faces a crisis.</p>
+  </div>
+</div>
+
+<!-- Episode 30 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1UWod_Bfrrj8uNIsQFuNHCicVqip61zr-/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 30: The First Step</h3>
+    <p>Our heroes take their first steps toward an all-out battle against their enemies.</p>
+  </div>
+</div>
+
+<!-- Episode 31 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1M_3KVWSb_zon6LuYCRzCfQV78tKgfZTp/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 31: Return of the Jinchuriki</h3>
+    <p>The return of the Jinchuriki brings new challenges and conflicts to the village.</p>
+  </div>
+</div>
+
+<!-- Episode 32 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/18huOi_rwRE5fyM6aRuwwZ6X60EwbMVa5/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 32: A Fierce Battle</h3>
+    <p>The battle intensifies as the fate of the village hangs in the balance.</p>
+  </div>
+</div>
+
+
+
+
+<center><a href="WebAnimeFlix.apk" download class="animated-button-link">
+    Next Page
+  </a></center>
+
+  <!-- Footer -->
+  <footer>
+    <p>2024 WebAnimeFlix. Designed and Developed by @_naruto4hinata_</p>
+</footer>
+
+  <script>
+    // Countdown timer
+    let countdownElement = document.getElementById('countdown');
+    let countdownValue = 15;
+    
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.innerHTML = countdownValue;
+
+      if (countdownValue <= 0) {
+        // Hide popup after countdown ends
+        document.getElementById('popup').style.opacity = 0;
+        document.getElementById('popup').style.visibility = 'hidden';
+      }
+    }
+
+    // Start countdown
+    setInterval(updateCountdown, 1000);
+   // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>

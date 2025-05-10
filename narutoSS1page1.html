@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .timer {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: cornflowerblue;
+        }
+        /* Footer */
+        footer {
+            background-color: #141414;
+            text-align: center;
+            padding: 15px;
+            color: #888;
+        }
+ .animated-button-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #222;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .animated-button-link::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(#1e90ff, #ff6347, #32cd32, #1e90ff);
+      z-index: -1;
+      animation: rotate 2s linear infinite;
+      border-radius: 10px;
+    }
+
+    .animated-button-link::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #222;
+      border-radius: 6px;
+      z-index: -1;
+    }
+
+    .disclaimer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #888;
+      max-width: 600px;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .animated-button-link {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+    /* Countdown and Pop-up Styles */
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .popup-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 300px;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #f40612;
+    }
+
+    /* Pulsing Circle Animation */
+    .pulsing-circle {
+      width: 100px;
+      height: 100px;
+      border: 10px solid #f40612;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin: 20px auto;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="popup" class="popup-container">
+    <div class="popup-content">
+      <h2>Page Loading...</h2>
+      <p>Please wait while the page is loading.</p>
+      <div class="countdown" id="countdown">15</div>
+      <div class="pulsing-circle"></div>
+    </div>
+  </div>
+  
+   <!-- Episodes Section -->
+    <!-- Naruto Shippuden Season 1 -->
+
+<!-- Episode 1 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1t4dZ7Zfh23IJaSk97nZcYbRwLcOmsrmA/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 1: Homecoming</h3>
+    <p>Naruto returns to the Hidden Leaf Village after two and a half years of training with Jiraiya.</p>
+  </div>
+</div>
+
+<!-- Episode 2 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1aMQAhxNAithoumG_tDTDDjKR1WpvxIse/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 2: The Akatsuki Makes Its Move</h3>
+    <p>The dangerous organization Akatsuki begins its plan, threatening the peace of the shinobi world.</p>
+  </div>
+</div>
+
+<!-- Episode 3 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1ZNbFUBEctmzKbeDYKJIAegjvKhAKq3y-/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 3: The Results of Training</h3>
+    <p>Naruto demonstrates the new skills he has acquired during his time away.</p>
+  </div>
+</div>
+
+<!-- Episode 4 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/13wCcdyDYs3RQgQ0xIlIYfkjKWQifTJok/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 4: The Jinchuriki of the Sand</h3>
+    <p>Gaara, now the Kazekage, must protect his village as the Akatsuki makes their move.</p>
+  </div>
+</div>
+
+<!-- Episode 5 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1t4o0plsgam8gmD_ulELovZWMCng83GKT/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 5: The Kazekage Stands Tall</h3>
+    <p>Gaara faces off against a mysterious Akatsuki member threatening the Sand Village.</p>
+  </div>
+</div>
+
+<!-- Episode 6 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1f0ys92XQYVxIRUAeU0vYIP6m76RWdEpA/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 6: Mission Cleared</h3>
+    <p>Naruto and the team head to the Sand Village for their first mission together.</p>
+  </div>
+</div>
+
+<!-- Episode 7 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1XsIjBXlxeW9kuUDfNwdabr3kPNKtkVlc/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 7: Run, Kankuro</h3>
+    <p>Kankuro chases down the enemy to save Gaara, risking his life in the process.</p>
+  </div>
+</div>
+
+<!-- Episode 8 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1UyIV6nW6lSjsXIS5w1urWXkSPUpXLLg5/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 8: Team Kakashi Deployed</h3>
+    <p>Kakashi leads a team to assist the Sand Village after the Akatsuki’s attack.</p>
+  </div>
+</div>
+
+<!-- Episode 9 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1GdAPU3LVVb3aeuyjkmxX7VjnzFldDJr1/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 9: The Jinchuriki’s Tears</h3>
+    <p>Gaara reflects on his past as he endures capture by the Akatsuki.</p>
+  </div>
+</div>
+
+<!-- Episode 10 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1Byxok-anhT6l2zd9200VtsVwd3VSdWxo/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 10: Sealing Jutsu: Nine Phantom Dragons</h3>
+    <p>The Akatsuki begin the process of extracting the One-Tailed Beast from Gaara.</p>
+  </div>
+</div>
+
+<!-- Episode 11 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1zm2p73BnpW_nzGWdszHW5Hchd7l290to/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 11: The Medical Ninja’s Student</h3>
+    <p>Sakura demonstrates her medical abilities as the team advances on their mission.</p>
+  </div>
+</div>
+
+<!-- Episode 12 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1B95CsqmuSXHXZ2lD4d2pmTIB-3WoQTyb/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 12: The Retired Granny’s Determination</h3>
+    <p>Granny Chiyo recalls her past as she prepares to help rescue Gaara.</p>
+  </div>
+</div>
+
+<!-- Episode 13 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/16yJJF6O-axFft7WXMtuDsS_8yKUfk_uW/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 13: A Meeting With Destiny</h3>
+    <p>Team Kakashi finally makes contact with the enemy and prepares for battle.</p>
+  </div>
+</div>
+
+<!-- Episode 14 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/11Pyo8O9aUmBc3On8YM-VNoCqM4a04P4T/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 14: Naruto’s Growth</h3>
+    <p>Naruto showcases his growth both as a fighter and as a person.</p>
+  </div>
+</div>
+
+<!-- Episode 15 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1sO6hOSLcHiIFqAX151dzAXIVos-tmoMd/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 15: The Secret Weapon is Called...</h3>
+    <p>Team Kakashi faces a new challenge with a hidden weapon unleashed.</p>
+  </div>
+</div>
+
+<!-- Episode 16 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1a-zTwtAANWwbeVmLM4M9kPoT-7hyp29N/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 16: The Secret of Jinchuriki</h3>
+    <p>The secret behind Jinchuriki and their connection to the tailed beasts is revealed.</p>
+  </div>
+</div>
+
+
+
+<center><a href="narutoSS1page2.html" download class="animated-button-link">
+    Next Page
+  </a></center>
+
+  <!-- Footer -->
+  <footer>
+    <p>2024 WebAnimeFlix. Designed and Developed by @_naruto4hinata_</p>
+</footer>
+
+  <script>
+    // Countdown timer
+    let countdownElement = document.getElementById('countdown');
+    let countdownValue = 15;
+    
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.innerHTML = countdownValue;
+
+      if (countdownValue <= 0) {
+        // Hide popup after countdown ends
+        document.getElementById('popup').style.opacity = 0;
+        document.getElementById('popup').style.visibility = 'hidden';
+      }
+    }
+
+    // Start countdown
+    setInterval(updateCountdown, 1000);
+   // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>
