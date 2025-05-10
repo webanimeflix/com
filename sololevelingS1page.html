@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Countdown and Pop-up Styles */
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .popup-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 300px;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #f40612;
+    }
+
+    /* Pulsing Circle Animation */
+    .pulsing-circle {
+      width: 100px;
+      height: 100px;
+      border: 10px solid #f40612;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin: 20px auto;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="popup" class="popup-container">
+    <div class="popup-content">
+      <h2>Page Loading...</h2>
+      <p>Please wait while the page is loading.</p>
+      <div class="countdown" id="countdown">15</div>
+      <div class="pulsing-circle"></div>
+    </div>
+  </div>
+
+  <!-- Solo Leveling - Episode 1 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1G8ROT5ol4zbcJjsPDNP8VLAkreo6J9K0/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 1: I'm Used to It</h3>
+    <p>Weakest hunter Jinwoo Sung gets trapped in a deadly double dungeon, forcing him to make a life-changing choice.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 2 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1D0vpg-aFvZ24Nw9XzZTf-ZhAbJDBdyFx/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 2: If I Had One More Chance</h3>
+    <p>Jinwoo awakens in a hospital with a mysterious quest log only he can see. A new path begins.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 3 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1upaXZbUZAXU3HrBVU8wiXhYxKIdl0mj8/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 3: It's Like a Game</h3>
+    <p>Jinwoo trains harder using the system's daily quests while exploring a new dungeon with fellow hunters.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 4 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1RueDMOh6xlmZZVwqLMBEvoUBfnPP7yEi/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 4: I'm Getting Stronger</h3>
+    <p>As Jinwoo levels up rapidly, he begins to uncover the true power the system grants him.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 5 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/12iI1SvP68VPf8KpXFb2RBcT-z5ZB9AWh/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 5: A Pretty Good Deal</h3>
+    <p>Jinwoo enters a dangerous new dungeon solo and unlocks a terrifying necromancer ability.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 6 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1kAYgq699LJTR5Cgcz-Nq_qm4pi_qx89Q/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 6: The Real Hunt Begins</h3>
+    <p>Jinwoo joins a hunter raid to test his new strength but quickly learns not all allies can be trusted.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 7 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1I6GU6bAMOyyjvzv8N43jyaJYjkHoOzfI/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 7: Let's See How Far I Can Go</h3>
+    <p>After the betrayal in the dungeon, Jinwoo unleashes his full power and leaves no doubt about his rise.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 8 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1PvVcCFQDqrJIbUzp6f8pqkTzdo_q2UpC/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 8: This Is Frustrating</h3>
+    <p>As Jinwoo gains fame, he also draws attention from powerful guilds and hidden enemies.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 9 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1ap-D8JEY0fQtlmpfOAIYe0PldSvsBJ40/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 9: You've Been Hiding Your Skills</h3>
+    <p>Jinwoo stuns everyone with his strength during a public dungeon raid, confirming his transformation.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 10 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1eUwK9je1w2RM30ZPMC8r0B-Oji0jVc7r/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 10: What Is This, a Picnic?</h3>
+    <p>Jinwoo enters a red gate dungeon that traps him with others—and reveals his deadly summons.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 11 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1_fkZCGraOVPDtzvpnGU7BdWo-KGOKRSM/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 11: A Knight Who Defends an Empty Throne</h3>
+    <p>Inside the red gate, Jinwoo faces an army of frost monsters while others struggle to survive.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 12 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1Tw15MgoCXMZNJLo8jmfm39a74U_QyEdR/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 12: Arise</h3>
+    <p>Jinwoo defeats the Ice Elf King and finally uses the command "Arise" to unlock his shadow army.</p>
+  </div>
+</div>
+
+  <script>
+
+     // Countdown timer
+    let countdownElement = document.getElementById('countdown');
+    let countdownValue = 15;
+    
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.innerHTML = countdownValue;
+
+      if (countdownValue <= 0) {
+        // Hide popup after countdown ends
+        document.getElementById('popup').style.opacity = 0;
+        document.getElementById('popup').style.visibility = 'hidden';
+      }
+    }
+
+    // Start countdown
+    setInterval(updateCountdown, 1000);
+
+
+    
+       // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>
