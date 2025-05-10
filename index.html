@@ -267,9 +267,43 @@
     .button:active {
       transform: scale(0.98); /* Button shrinks slightly on click */
     }
+    /* Loading Screen */
+#loading-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* Or dark theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    border: 8px solid #333;
+    border-top: 8px solid #e50914;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
     </style>
 </head>
 <body>
+
+
+    <div id="loading-screen">
+  <div class="loader"></div>
+</div>
+
 
     <!-- Navbar -->
     <div class="navbar">
@@ -296,17 +330,7 @@
 
     <!-- Anime Cards Section -->
     <div id="anime-list">
-        
-        <div class="anime-card" data-title="Wind Breaker">
-            <img src="windbreakerimage.jpg" alt="Wind Breaker">
-            <div class="anime-info">
-                <h2>Wind Breaker (Hindi-Dub)</h2>
-                <a href="windbreaker.html">
-                    <button class="button-spacing">CLICK HERE</button>
-                </a>
-            </div>
-        </div>
-    
+
         <div class="anime-card" data-title="Kaiju No.8">
             <img src="kaijuno8image.jpg" alt="Kaiju No.8">
             <div class="anime-info">
@@ -327,25 +351,16 @@
             </div>
         </div>
 
-        <div class="anime-card" data-title="Solo Leveling Season 1">
-            <img src="sololevelingS1.image.jpg" alt="Solo leveling">
+        <div class="anime-card" data-title="Wind Breaker">
+            <img src="windbreakerimage.jpg" alt="Wind Breaker">
             <div class="anime-info">
-                <h2>Solo Leveling Season 1 (Hindi-Dub)</h2>
-                <a href="spyxfamilyS1page.html">
+                <h2>Wind Breaker (Hindi-Dub)</h2>
+                <a href="windbreaker.html">
                     <button class="button-spacing">CLICK HERE</button>
                 </a>
             </div>
         </div>
 
-        <div class="anime-card" data-title="Solo Leveling Season 2">
-            <img src="sololevelingS2.image.jpg" alt="Solo leveling">
-            <div class="anime-info">
-                <h2>Solo Leveling Season 2 (Hindi-Dub)</h2>
-                <a href="spyxfamilyS1page.html">
-                    <button class="button-spacing">CLICK HERE</button>
-                </a>
-            </div>
-        </div>
 
         <div class="anime-card" data-title="Chainsaw Man">
             <img src="chainsawmanimage.JPEG" alt="Chainsaw Man Season 1">
@@ -437,6 +452,26 @@
             </div>
         </div>
 
+        <div class="anime-card" data-title="Solo Leveling Season 1">
+            <img src="sololevelingS1.image.jpg" alt="Solo leveling">
+            <div class="anime-info">
+                <h2>Solo Leveling Season 1 (Hindi-Dub)</h2>
+                <a href="spyxfamilyS1page.html">
+                    <button class="button-spacing">CLICK HERE</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="anime-card" data-title="Solo Leveling Season 2">
+            <img src="sololevelingS2.image.jpg" alt="Solo leveling">
+            <div class="anime-info">
+                <h2>Solo Leveling Season 2 (Hindi-Dub)</h2>
+                <a href="spyxfamilyS1page.html">
+                    <button class="button-spacing">CLICK HERE</button>
+                </a>
+            </div>
+        </div>
+
         <div class="anime-card" data-title="Naruto Shippuden season 1">
             <img src="nseason-1.jpg" alt="Naruto Shippuden season 1">
             <div class="anime-info">
@@ -489,6 +524,15 @@
                 }
             }
         }
+    
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loading-screen");
+    loader.style.opacity = "0";
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 500);
+});
+
     </script>
 
 </body>
