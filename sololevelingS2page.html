@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAnimeFlix</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #141414;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      color: #f40612;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f40612;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    /* Video Container Styling */
+    .video-container {
+      background-color: #222222;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f40612;
+    }
+
+    .details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Countdown and Pop-up Styles */
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .popup-content {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 300px;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #f40612;
+    }
+
+    /* Pulsing Circle Animation */
+    .pulsing-circle {
+      width: 100px;
+      height: 100px;
+      border: 10px solid #f40612;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin: 20px auto;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+      <h1 class="logo">WebAnimeFlix</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#episodes">Episodes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="popup" class="popup-container">
+    <div class="popup-content">
+      <h2>Page Loading...</h2>
+      <p>Please wait while the page is loading.</p>
+      <div class="countdown" id="countdown">15</div>
+      <div class="pulsing-circle"></div>
+    </div>
+  </div>
+
+  <!-- Solo Leveling - Episode 13 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1ILxJ4DyqIGiU5XpfU0FGz_RJriKJz2TH/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 1: A Hunter's Resolve</h3>
+    <p>Jinwoo joins a C-Rank dungeon expedition to help Han Song-Yi, but the dungeon transforms into a deadly trap, forcing him to confront the powerful boss Baruka.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 14 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1wBjTbcP-z9jZ4QBHc3v-FEg2-KbQjZ1l/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 2: Shadows of Betrayal</h3>
+    <p>As tensions rise, Jinwoo battles Baruka using his Shadow Army, leading to unexpected consequences and revelations about his own humanity.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 15 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1b7tCxTEd333JxtvM1iLldV5EPvJq00rt/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 3: Reunion and Resolve</h3>
+    <p>Jinwoo's father, Sung Il-Hwan, returns after a decade, bringing warnings of impending doom, while Jinwoo prepares for greater challenges ahead.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 16 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/13_KqrUuyMhOr3zBkwl1IavdPYutZkIHb/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 4: Ascension</h3>
+    <p>Jinwoo undergoes a reassessment, earning the title of South Korea's tenth S-Rank Hunter, and begins strategizing for future battles.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 17 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1CIT3dFP_k9rKf5z4v1Qx-gl2ShyV5dya/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 5: The Orc's Domain</h3>
+    <p>While assisting a mining team, Jinwoo faces the formidable orc boss Kargalgan, testing his strength and resolve.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 18 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1Fb2aGTAMl00vrSnVEV-pKSoWu1Ko09Vj/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 6: New Alliances</h3>
+    <p>After defeating Kargalgan, Jinwoo gains a new ally, Tusk, and considers offers to join various guilds, while a new threat emerges.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 19 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1mHlwTP_R9kX2DIbcbNGAHeSIyqnTjwp4/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 7: The Demon Castle</h3>
+    <p>Jinwoo ventures into the Demon Castle, forming an alliance with the demon noble Esil, and prepares to face the Demon King Baran.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 20 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1gTIXdayhhDdCyDF-pBlNB4iaeZEdOLJE/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 8: Dragon's Descent</h3>
+    <p>In a fierce battle, Jinwoo defeats Demon King Baran and gains a powerful new companion, the dragon Kaisel.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 21 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1V4IdVy2c0ca6bM_1MZBzBfCykp9zTEfe/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 9: Family Bonds</h3>
+    <p>Jinwoo uses a special potion to heal his mother, leading to a heartfelt family reunion and new motivations.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 22 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1qo6EaEr5PYfbMItXZYGfgk6EBHnmHjKk/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 10: The Jeju Island Operation</h3>
+    <p>As preparations for the Jeju Island operation intensify, Jinwoo faces challenges from both allies and enemies.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 23 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1LzfYrmJ4x5ycIKywzAkgrRwSST0m_FX9/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 11: Ant King's Wrath</h3>
+    <p>The Ant King emerges, wreaking havoc on the Hunters, prompting Jinwoo to take decisive action.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 24 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1mPXCR78fPV4kfIYa5fVW2973gi5sX-EH/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 12: Shadow Monarch's Descent</h3>
+    <p>Jinwoo unleashes his full power as the Shadow Monarch, turning the tide of battle against the Ant King.</p>
+  </div>
+</div>
+
+<!-- Solo Leveling - Episode 25 -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1IaLAcLg43YO-KdBNqlEQ7jCdn56HIvRs/preview" allow="autoplay; fullscreen"></iframe>
+  </div>
+  <div class="details">
+    <h3>Episode 13: Towards a New Horizon</h3>
+    <p>With the battle concluded, Jinwoo reflects on his journey and prepares for the challenges that lie ahead.</p>
+  </div>
+</div>
+
+
+  <script>
+
+     // Countdown timer
+    let countdownElement = document.getElementById('countdown');
+    let countdownValue = 15;
+    
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.innerHTML = countdownValue;
+
+      if (countdownValue <= 0) {
+        // Hide popup after countdown ends
+        document.getElementById('popup').style.opacity = 0;
+        document.getElementById('popup').style.visibility = 'hidden';
+      }
+    }
+
+    // Start countdown
+    setInterval(updateCountdown, 1000);
+
+
+    
+       // Listen for fullscreen events triggered by the iframe
+   document.addEventListener('fullscreenchange', () => {
+       if (document.fullscreenElement) {
+           // Lock screen orientation to landscape when entering fullscreen
+           if (screen.orientation && screen.orientation.lock) {
+               screen.orientation.lock('landscape').catch(err => {
+                   console.error("Orientation lock failed:", err);
+               });
+           }
+       } else {
+           // Unlock orientation when exiting fullscreen
+           if (screen.orientation && screen.orientation.unlock) {
+               screen.orientation.unlock();
+           }
+       }
+   });
+
+   // Ensure videos are clickable to enable fullscreen natively
+   document.querySelectorAll('iframe').forEach(iframe => {
+       iframe.addEventListener('click', () => {
+           // Automatically enters fullscreen when iframe is clicked
+           if (iframe.requestFullscreen) {
+               iframe.requestFullscreen();
+           } else if (iframe.webkitRequestFullscreen) {
+               iframe.webkitRequestFullscreen(); // Safari
+           } else if (iframe.msRequestFullscreen) {
+               iframe.msRequestFullscreen(); // IE/Edge
+           }
+       });
+   });
+</script>
+</body>
+</html>
